@@ -1,11 +1,11 @@
 {
   "metadata": {
-    "title": "HTML5 Canvas Game Scaffold",
-    "description": "A scaffold for creating games with HTML5 Canvas on Koji. Easily customizable at gokoji.com.",
-    "image": "https://i.imgur.com/1VTl2r7.png",
-    "icon": "https://via.placeholder.com",
-    "icon192": "https://via.placeholder.com/192",
-    "icon512": "https://via.placeholder.com/512",
+    "title": "Button War",
+    "description": "A competitive idle miner. Easily customizable at gokoji.com.",
+    "image": "https://images.koji-cdn.com/template-assets/2028b282-aaf9-49bb-acc7-96d102f44dc0_1557436466049.png",
+    "icon": "https://images.koji-cdn.com/template-assets/2028b282-aaf9-49bb-acc7-96d102f44dc0_1557436466049.png",
+    "icon192": "https://images.koji-cdn.com/template-assets/2028b282-aaf9-49bb-acc7-96d102f44dc0_1557436466049.png?w=192",
+    "icon512": "https://images.koji-cdn.com/template-assets/2028b282-aaf9-49bb-acc7-96d102f44dc0_1557436466049.png?w=512",
     "gaCode": ""
   },
   "@@editor": [

@@ -1,35 +1,32 @@
 {
-    "sounds": {
-      "backgroundMusic": "https://objects.koji-cdn.com/509732fa-8e49-42dc-bdaa-5bba44ff75ca/coin.mp3",
-      "scoreSound": "https://objects.koji-cdn.com/509732fa-8e49-42dc-bdaa-5bba44ff75ca/coin.mp3",
-      "winSound": "https://objects.koji-cdn.com/509732fa-8e49-42dc-bdaa-5bba44ff75ca/coin.mp3"
-    },
-    "@@editor": [
+  "sounds": {
+    "backgroundMusic": "https://objects.koji-cdn.com/2b52adad-cc35-46c3-9782-edf872c76874/button-music.mp3",
+    "scoreSound": "https://objects.koji-cdn.com/509732fa-8e49-42dc-bdaa-5bba44ff75ca/coin.mp3",
+    "winSound": "https://objects.koji-cdn.com/2b52adad-cc35-46c3-9782-edf872c76874/buttonwin.mp3"
+  },
+  "@@editor": [{
+    "key": "sounds",
+    "name": "Sounds",
+    "icon": "🔊️",
+    "source": "sounds.json",
+    "fields": [{
+        "key": "backgroundMusic",
+        "name": "Background Music",
+        "description": "Music to play in the background",
+        "type": "sound"
+      },
       {
-        "key": "sounds",
-        "name": "Sounds",
-        "icon": "🔊️",
-        "source": "sounds.json",
-        "fields": [
-          {
-            "key": "backgroundMusic",
-            "name": "Background Music",
-            "description": "Music to play in the background",
-            "type": "sound"
-          },
-          {
-            "key": "scoreSound",
-            "name": "Score Sound",
-            "description": "Sounds when player scores a point",
-            "type": "sound"
-          },
-          {
-            "key": "winSound",
-            "name": "Win Sound",
-            "description": "Sound when player wins",
-            "type": "sound"
-          }
-        ]
+        "key": "scoreSound",
+        "name": "Score Sound",
+        "description": "Sounds when player scores a point",
+        "type": "sound"
+      },
+      {
+        "key": "winSound",
+        "name": "Win Sound",
+        "description": "Sound when player wins",
+        "type": "sound"
       }
     ]
-  }
+  }]
+}
