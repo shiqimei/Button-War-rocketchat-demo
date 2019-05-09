@@ -129,7 +129,8 @@ class Game {
         };
 
         // set number settings
-        this.winScore = parseInt(this.config.settings.winScore);
+        this.goText = this.config.settings.goText;
+        this.winBy = parseInt(this.config.settings.winBy);
         this.countDownLength = parseInt(this.config.settings.countDown);
 
         // set document body to backgroundColor
@@ -209,7 +210,7 @@ class Game {
             height: this.screen.bottom,
             pointA: this.player2,
             pointB: this.player1,
-            win: this.winScore
+            win: this.winBy
         });
 
         this.points = [];
@@ -283,14 +284,14 @@ class Game {
             if (!this.state.muted) { this.sounds.backgroundMusic.play(); }
 
             // check for wins
-            if (this.player1.score >= this.player2.score + this.winScore) {
+            if (this.player1.score >= this.player2.score + this.winBy) {
                 // player 1 wins
                 this.wintime = Date.now();
                 this.sounds.winSound.play();
                 this.setState({ current: 'win-player1' });
             }
 
-            if (this.player2.score >= this.player1.score + this.winScore) {
+            if (this.player2.score >= this.player1.score + this.winBy) {
                 // player 2 wins
                 this.wintime = Date.now();
                 this.sounds.winSound.play();
@@ -382,7 +383,7 @@ class Game {
         if ( target.id === 'button') {
             
             this.setState({ current: 'countdown' })
-            this.countdown(this.countDownLength, 'Go!', () => {
+            this.countdown(this.countDownLength, this.goText, () => {
                 this.setState({ current: 'play' });
 
                 // if defaulting to have sound on by default
@@ -417,14 +418,29 @@ class Game {
                 this.playerScore(this.player2);
             }
 
-            // spacebar: pause and play game
+            // spacebar start game
             if (code === 'Space') {
+                // start game when read
+                if (this.state.current === 'ready') {
+                    this.setState({ current: 'countdown' })
+                    this.countdown(this.countDownLength, this.goText, () => {
+                        this.setState({ current: 'play' });
+
+                        // if defaulting to have sound on by default
+                        // double mute() to warmup iphone audio here
+                        this.mute();
+                        this.mute();
+                    });
+                }
+
                 // reload when player has won
                 if (this.state.current.includes('win')) {
                     this.cancelFrame(this.frame.count - 1);
                     this.load();
-                    return;
-                } else {
+                }
+
+                // pause when game state is play
+                if (this.state.current === 'play') {
                     this.pause();
                 }
             }
@@ -521,8 +537,10 @@ class Game {
     }
 
     countdown(n, goText, done) {
+
         let count = n;
         let cd = setInterval(() => {
+            // done with countdown
             if (count < 0) {
                 this.overlay.hide['countdown'];
                 this.overlay.countdown.style.display = 'none';
@@ -530,11 +548,16 @@ class Game {
                 done();
             }
 
-            if (count === 0) {
-                this.overlay.setCountDown(goText);
-            } else {
-                this.overlay.setCountDown(count);
+            // display go text for 0 count
+            let display = count < 1 ? goText : count;
+            this.overlay.setCountDown(display);
+
+            // only show positive counts
+            if (count > 0) {
+                this.overlay.countdown.style.display = 'block';
+                this.overlay.show['countdown'];
             }
+            
             count -= 1;
         }, 1000);
     }

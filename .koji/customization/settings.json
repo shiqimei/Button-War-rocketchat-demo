@@ -4,8 +4,9 @@
       "startText": "Start",
       "instructionsMobile": "Tap the buttons to win!",
       "instructionsDesktop": "Tap the buttons to win! <br> Player 1: Press Right Shift <br> Player 2: Press Left Shift",
+      "goText": "Go!",
       "playerSize": "60",
-      "winScore": "5",
+      "winBy": "5",
       "countDown": "3",
       "fontFamily": "Righteous"
     },
@@ -37,8 +38,8 @@
             "name": "Size of Player"
           },
           {
-            "key": "winScore",
-            "name": "Number of points player needs to have more than opponent to win"
+            "key": "winBy",
+            "name": "Win by number"
           },
           {
             "key": "countDown",
