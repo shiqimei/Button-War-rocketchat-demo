@@ -1,0 +1,39 @@
+{
+  "colors": {
+    "textColor": "#FFE74C",
+    "primaryColor": "#58355E",
+    "playerOneColor": "#EC145F",
+    "playerTwoColor": "#149EEC"
+  },
+  "@@editor": [
+    {
+      "key": "colors",
+      "name": "Colors",
+      "icon": "💅",
+      "source": "colors.json",
+      "fields": [
+        {
+          "key": "textColor",
+          "name": "Text color",
+          "description": "Default color for text",
+          "type": "color"
+        },
+        {
+          "key": "primaryColor",
+          "name": "Primary Color",
+          "type": "color"
+        },
+        {
+          "key": "playerOneColor",
+          "name": "Color for player 1",
+          "type": "color"
+        },
+        {
+          "key": "playerTwoColor",
+          "name": "Color for player 2",
+          "type": "color"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+    "settings": {
+      "name": "Button War",
+      "startText": "Start",
+      "instructionsMobile": "Tap the buttons to win!",
+      "instructionsDesktop": "Tap the buttons to win! <br> Player 1: Press Right Shift <br> Player 2: Press Left Shift",
+      "playerSize": "60",
+      "winScore": "5",
+      "countDown": "3",
+      "fontFamily": "Righteous"
+    },
+    "@@editor": [
+      {
+        "key": "settings",
+        "name": "Game settings",
+        "icon": "🎮",
+        "source": "settings.json",
+        "fields": [
+          {
+            "key": "name",
+            "name": "App name"
+          },
+          {
+            "key": "startText",
+            "name": "Start Button Text"
+          },
+          {
+            "key": "instructionsMobile",
+            "name": "How to play the game on mobile"
+          },
+          {
+            "key": "instructionsDesktop",
+            "name": "How to play the game on desktop"
+          },
+          {
+            "key": "playerSize",
+            "name": "Size of Player"
+          },
+          {
+            "key": "winScore",
+            "name": "Number of points player needs to have more than opponent to win"
+          },
+          {
+            "key": "countDown",
+            "name": "Length of countdown"
+          },
+          {
+            "key": "fontFamily",
+            "name": "Font to use for text in the game"
+          }
+        ]
+      }
+    ]
+  }

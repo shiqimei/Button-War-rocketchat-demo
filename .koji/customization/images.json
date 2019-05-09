@@ -1,0 +1,28 @@
+{
+  "images": {
+    "playerOneImage": "https://i.imgur.com/TGRgy8U.png",
+    "playerTwoImage": "https://i.imgur.com/LuNcYBU.png"
+  },
+  "@@editor": [
+    {
+      "key": "images",
+      "name": "Images",
+      "icon": "🖼️",
+      "source": "images.json",
+      "fields": [
+        {
+          "key": "playerOneImage",
+          "name": "Player One Image",
+          "description": "Image for player 1",
+          "type": "image"
+        },
+        {
+          "key": "playerTwoImage",
+          "name": "Player Two Image",
+          "description": "Image for player 2",
+          "type": "image"
+        }
+      ]
+    }
+  ]
+}
