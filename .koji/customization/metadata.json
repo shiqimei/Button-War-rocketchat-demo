@@ -3,9 +3,9 @@
     "title": "Button War",
     "description": "A competitive button mash game. Easily customizable at gokoji.com.",
     "image": "https://images.koji-cdn.com/template-assets/2eb422e6-120b-425a-91ce-aecbe22abbf2_1558557304531.png",
-    "icon": "https://images.koji-cdn.com/template-assets/2028b282-aaf9-49bb-acc7-96d102f44dc0_1557436466049.png",
-    "icon192": "https://images.koji-cdn.com/template-assets/2028b282-aaf9-49bb-acc7-96d102f44dc0_1557436466049.png?w=192",
-    "icon512": "https://images.koji-cdn.com/template-assets/2028b282-aaf9-49bb-acc7-96d102f44dc0_1557436466049.png?w=512",
+    "icon": "https://images.koji-cdn.com/template-assets/2eb422e6-120b-425a-91ce-aecbe22abbf2_1558557304531.png",
+    "icon192": "https://images.koji-cdn.com/template-assets/2eb422e6-120b-425a-91ce-aecbe22abbf2_1558557304531.png?w=192",
+    "icon512": "https://images.koji-cdn.com/template-assets/2eb422e6-120b-425a-91ce-aecbe22abbf2_1558557304531.png?w=512",
     "gaCode": ""
   },
   "@@editor": [
