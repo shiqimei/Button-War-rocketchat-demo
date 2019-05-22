@@ -1,7 +1,17 @@
-![Game Artwork](https://i.imgur.com/jcBe9Ef.png)
+# Button War
 
-# HTML5 Canvas Game Scaffold
+Button War gets to the core of competitive button mashing, and this template makes it easy to create one (or many) of your own without having to learn a complicated framework. This template gives you a complete scaffold to start building right away.
 
-A perfect beginner template for new game makers.
+## Visual Customization Controls (VCC's)
+- 🎮 Customize game settings.
+- 🖼️ Customize button images.
+- 🔈 Customize sounds and background music.
+- 💅 Customize the colors and visual style.
+- ⚙️ Add Google Analytics ID and Open Graph information for sharing.
 
-This template gives you a complete scaffold to start building from, and effortless deploy with a single click. Find more documentation about game development [**here**] (https://developer.mozilla.org/en-US/docs/Games).
+## Some Ideas
+- Competing sports teams.
+- Competing foods.
+
+## People are here to help you get it done
+If you need any help, you can ask the community by [making a post](https://gokoji.com/posts), or [joining the discord](https://discordapp.com/invite/eQuMJF6).
