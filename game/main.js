@@ -311,12 +311,12 @@ class Game {
 
         // player one wins
         if (this.state.current === 'win-player1') {
-            this.overlay.setBanner('Player 1 Wins!');
+            this.overlay.setBanner(this.config.settings.playerOneWinText);
         }
 
         // player two wins
         if (this.state.current === 'win-player2') {
-            this.overlay.setBanner('Player 2 Wins!');
+            this.overlay.setBanner(this.config.settings.playerTwoWinText);
         }
 
         // draw points
@@ -338,13 +338,17 @@ class Game {
         // increment score
         player.scorePoint(1);
 
+        // get point x and y
+        let pointX = player.x + player.width / 4;
+        let pointY = player.y + player.height / 4;
+
         // add point
         this.points.push(
             new Point({
                 ctx: this.ctx,
                 text: '+1',
-                x: player.x,
-                y: player.y,
+                x: pointX,
+                y: pointY,
                 font: this.fonts.gameFont,
                 color: this.config.colors.textColor
             })
