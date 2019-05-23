@@ -5,6 +5,8 @@
       "instructionsMobile": "Tap the buttons to win!",
       "instructionsDesktop": "Tap the buttons to win! <br> Player 1: Press Right Shift <br> Player 2: Press Left Shift",
       "goText": "Go!",
+      "playerOneName": "Player One",
+      "playerTwoName": "Player Two",
       "playerOneWinText": "Player One Wins!",
       "playerTwoWinText": "Player Two Wins!",
       "playerSize": "60",
@@ -38,6 +40,14 @@
           {
             "key": "goText",
             "name": "Text to display at end of countdown"
+          },
+          {
+            "key": "playerOneName",
+            "name": "Name for Player 1"
+          },
+          {
+            "key": "playerTwoName",
+            "name": "Name for Player 2"
           },
           {
             "key": "playerOneWinText",

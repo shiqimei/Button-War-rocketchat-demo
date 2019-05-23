@@ -17,6 +17,7 @@ class Button extends ImageSprite {
     constructor(options) {
         super(options);
 
+        this.name = options.name;
         this.color = options.color;
         this.score = 0;
     }

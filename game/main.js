@@ -142,6 +142,8 @@ class Game {
     }
 
     load() {
+        if(this.sounds.backgroundMusic) { this.sounds.backgroundMusic.pause(); }
+
         // load pictures, sounds, and fonts
 
         this.init(); // apply new configs
@@ -179,6 +181,7 @@ class Game {
 
         // player 1
         this.player1 = new Button({
+            name: this.config.settings.playerOneName,
             ctx: this.ctx,
             image: playerOneImage,
             x: right - playerWidth,
@@ -191,6 +194,7 @@ class Game {
 
         // player 2
         this.player2 = new Button({
+            name: this.config.settings.playerTwoName,
             ctx: this.ctx,
             image: playerTwoImage,
             x: left,
@@ -237,8 +241,8 @@ class Game {
         this.background.draw();
 
         // draw scores
-        this.overlay.setScore1(this.player1.score);
-        this.overlay.setScore2(this.player2.score);
+        this.overlay.setScore1(this.player1.name, this.player1.score);
+        this.overlay.setScore2(this.player2.name, this.player2.score);
 
         // ready to play
         if (this.state.current === 'ready') {

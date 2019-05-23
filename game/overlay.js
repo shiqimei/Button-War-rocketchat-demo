@@ -67,13 +67,13 @@ class Overlay {
         this.show('instructions');
     }
 
-    setScore1(score) {
-        this.score1.textContent = `Player 1: ${score}`;
+    setScore1(name, score) {
+        this.score1.textContent = `${name}: ${score}`;
         this.show('score1');
     }
 
-    setScore2(score) {
-        this.score2.textContent = `Player 2: ${score}`;
+    setScore2(name, score) {
+        this.score2.textContent = `${name}: ${score}`;
         this.show('score2');
     }
 
