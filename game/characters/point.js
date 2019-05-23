@@ -14,7 +14,7 @@
 import { hexToRgbA } from '../helpers/utils.js';
 
 class Point {
-    constructor({ctx, text, x, y, font, color}) {
+    constructor({ctx, text, x, y, font, fontSize, color}) {
         this.ctx = ctx;
 
         this.x = x;
@@ -29,7 +29,7 @@ class Point {
 
         // this.color = hexToHSL(color);
         this.color = color;
-        this.font = `bold 50px ${font}`
+        this.font = `bold ${fontSize}px ${font}`
         this.alpha = 1;
     }
     

@@ -346,6 +346,14 @@ class Game {
         let pointX = player.x + player.width / 4;
         let pointY = player.y + player.height / 4;
 
+        // get point size
+        let fontSize = [window
+        .getComputedStyle(this.overlay.banner, null)
+        .getPropertyValue("font-size")]
+        .map(val => val.replace('px', ''))
+        .map(val => Math.round(val))
+        .reduce(v => v);
+
         // add point
         this.points.push(
             new Point({
@@ -354,6 +362,7 @@ class Game {
                 x: pointX,
                 y: pointY,
                 font: this.fonts.gameFont,
+                fontSize: fontSize,
                 color: this.config.colors.textColor
             })
         );
