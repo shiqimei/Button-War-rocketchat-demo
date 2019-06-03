@@ -1,7 +1,7 @@
 {
     "settings": {
       "name": "Button War",
-      "startText": "Start",
+      "startText": "Login to Start",
       "instructionsMobile": "Tap the buttons to win!",
       "instructionsDesktop": "Tap the buttons to win! <br> Player 1: Press Right Shift <br> Player 2: Press Left Shift",
       "goText": "Go!",
