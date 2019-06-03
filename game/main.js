@@ -20,6 +20,7 @@
  *   Most things to change will be in the play function
  */
 
+import './views/popupLayer';
 import Koji from 'koji-tools';
 
 import {
@@ -398,7 +399,8 @@ class Game {
 
         // button
         if ( target.id === 'button') {
-            
+            alert('start the game');
+            return
             this.setState({ current: 'countdown' })
             this.countdown(this.countDownLength, this.goText, () => {
                 this.setState({ current: 'play' });
