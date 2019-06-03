@@ -1,7 +1,7 @@
 import * as types from '../actions/actionsTypes';
 
 const initialState = {
-	show: true
+	show: false
 };
 
 export default function authPanel(state = initialState, action) {

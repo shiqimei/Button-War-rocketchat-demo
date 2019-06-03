@@ -16,13 +16,25 @@ class AuthPanel extends React.Component {
 		show: PropTypes.bool
 	}
 
+	state = {
+		enter: false,
+		leave: false
+	}
+
+	componentWillMount() {
+		this.state.leave = false;
+		this.state.enter = true;
+	}
+
 	renderPanel() {
 		const { settings } = globalConfig;
 
 		return (
-			<div style={mainStyle}>
+			<div style={mainStyle} className={
+				this.state.enter ? 'wbBounceIn' : 'authPanel'
+			}>
 				<h3 style={h3Style} > { settings.name } <span style={pStyle}>Apply</span></h3>
-				<p style={pStyle}>Obtain your Rocket.Chat username, userid and avatar.</p>
+				<p style={pStyle}>Obtain your Rocket.Chat username, userId and avatar.</p>
 				<div className='buttonBox' style={buttonBoxStyle}>
 					<CancelButton />
 					<AllowButton />
@@ -40,9 +52,9 @@ class AuthPanel extends React.Component {
 
 const mainStyle = {
 	position: 'absolute',
-	top: '38%',
-	left: '50%',
-	transform: 'translate(-50%, -50%)',
+	top: '25%',
+	left: '15%',
+	right: '15%',
 	background: 'white',
 	zIndex: '1000',
 	padding: 10,

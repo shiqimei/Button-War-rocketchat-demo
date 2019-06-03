@@ -20,6 +20,8 @@
  *   Most things to change will be in the play function
  */
 
+import './assets/animations.css';
+
 import Koji from 'koji-tools';
 import './views/popupLayer';
 import reduxStore from './createStore';
