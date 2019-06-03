@@ -1,7 +1,7 @@
 const REQUEST = 'REQUEST';
 const SUCCESS = 'SUCCESS';
 const FAILURE = 'FAILURE';
-const requestTypes = [REQUEST, SUCCESS, FAILURE];
+const defaultTypes = [REQUEST, SUCCESS, FAILURE];
 
 function createRequestTypes(base, types = defaultTypes) {
 	const res = {};
