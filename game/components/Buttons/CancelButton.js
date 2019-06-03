@@ -1,9 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-class CancelButton extends React.PureComponent {
+class CancelButton extends React.Component {
+	static propTypes = {
+		onClick: PropTypes.func
+	}
+
 	render() {
+		const { onClick } = this.props;
+
 		return (
-			<button style={style}>Cancel</button>
+			<button style={style} onClick={onClick}>Cancel</button>
 		);
 	}
 }

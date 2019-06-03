@@ -14,6 +14,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "classnames": "^2.2.6",
     "koji-tools": "^0.2.1",
     "parcel-bundler": "^1.12.3",
     "ramda": "^0.26.1",

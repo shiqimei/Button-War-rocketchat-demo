@@ -1,14 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 import AllowButton from './Buttons/AllowButton';
 import CancelButton from './Buttons/CancelButton';
 
 import { connect } from 'react-redux';
+import * as authPanelActions from '../actions/authPanel';
 import { config as globalConfig } from 'koji-tools';
 
 @connect(state => ({
 	show: state.authPanel.show
+}), dispatch => ({
+	showPanel: () => dispatch(authPanelActions.showPanel()),
+	hidePanel: () => dispatch(authPanelActions.hidePanel())
 }))
 
 class AuthPanel extends React.Component {
@@ -16,27 +21,20 @@ class AuthPanel extends React.Component {
 		show: PropTypes.bool
 	}
 
-	state = {
-		enter: false,
-		leave: false
-	}
-
-	componentWillMount() {
-		this.state.leave = false;
-		this.state.enter = true;
-	}
-
-	renderPanel() {
+	renderPanel(show) {
+		const { hidePanel } = this.props;
 		const { settings } = globalConfig;
+		const className = classNames({
+			'wbBounceIn': show,
+			'wbBounceOut': !show
+		});
 
 		return (
-			<div style={mainStyle} className={
-				this.state.enter ? 'wbBounceIn' : 'authPanel'
-			}>
+			<div style={mainStyle} className={className}>
 				<h3 style={h3Style} > { settings.name } <span style={pStyle}>Apply</span></h3>
 				<p style={pStyle}>Obtain your Rocket.Chat username, userId and avatar.</p>
 				<div className='buttonBox' style={buttonBoxStyle}>
-					<CancelButton />
+					<CancelButton onClick={() => hidePanel()} />
 					<AllowButton />
 				</div>
 			</div>
@@ -46,7 +44,7 @@ class AuthPanel extends React.Component {
 	render() {
 		const { show } = this.props;
 
-		return show ? this.renderPanel() : null;
+		return show ? this.renderPanel(show) : null;
 	}
 }
 
