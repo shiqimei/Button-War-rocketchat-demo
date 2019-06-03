@@ -5,8 +5,14 @@ import ReactDOM from 'react-dom';
 
 import AuthPanel from '../components/AuthPanel';
 
-const layer = document.querySelector('#popup-layer');
+import { Provider } from 'react-redux';
+import reduxStore from '../createStore';
+
+
+const rootElement = document.querySelector('#popup-layer');
 ReactDOM.render(
-	<AuthPanel />,
-	layer
+	<Provider store={reduxStore}>
+		<AuthPanel />
+	</Provider>,
+	rootElement
 );
