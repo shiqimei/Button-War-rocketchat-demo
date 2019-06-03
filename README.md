@@ -1,8 +1,17 @@
 # Button War
 
-A competitive button mashing game
+A competitive button mashing game, which is the exploration that integrates the [Koji](https://gokoji.com) mini apps into [Rokcet.Chat](http://rocket.chat)!
 
-# VCC's
+![](./docs/images/preview.gif)
+
+## Features
+| Name | Status |
+| :-: | :-: |
+| Rocket.Chat Authorization | Working in Progress |
+| Websocket | X |
+| ... | ... |
+
+## VCC's
 
 - 🎮 Change the text and game settings
     * [Open configuration](#~/.koji/customization/settings.json!visual)
