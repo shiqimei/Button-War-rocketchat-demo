@@ -82,7 +82,7 @@ canvas {
     margin: 0 auto;
     padding: 1.2vh 2em;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    box-shadow: 0 0 10px 0 rgb(120, 120, 120);
+    box-shadow: 0 0 5px 0 rgb(120, 120, 120);
     color: #191919;
     background-color: white!important;
     font-size: 18px;
@@ -183,6 +183,10 @@ canvas {
     cursor: pointer;
     transition: opacity 3s;
     font-size: 1.5em;
+}
+
+.material-icons {
+    border: none!important;
 }
 
 /*!
