@@ -46,7 +46,7 @@ const mainStyle = {
 	background: 'white',
 	zIndex: '1000',
 	padding: 10,
-	boxShadow: '0 0 5px 1px rgb(120, 120, 120)',
+	boxShadow: '0 0 1px .5px rgb(150, 150, 150)',
 	borderRadius: 5
 };
 

@@ -23,7 +23,8 @@ const style = {
 	border: '.5px #eff solid',
 	padding: '8px 30px',
 	borderRadius: 3,
-	cursor: 'pointer'
+	cursor: 'pointer',
+	fontWeight: 600
 };
 
 export default AllowButton;
