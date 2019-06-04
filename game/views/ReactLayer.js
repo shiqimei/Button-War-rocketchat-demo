@@ -9,7 +9,7 @@ import { Provider } from 'react-redux';
 import reduxStore from '../createStore';
 
 
-const rootElement = document.querySelector('#popup-layer');
+const rootElement = document.querySelector('#react-layer');
 ReactDOM.render(
 	<Provider store={reduxStore}>
 		<AuthPanel />

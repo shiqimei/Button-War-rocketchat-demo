@@ -24,7 +24,7 @@ import './assets/animations.css';
 import './reducers/windowMessage';
 
 import Koji from 'koji-tools';
-import './views/popupLayer';
+import './views/ReactLayer';
 import reduxStore from './createStore';
 import {
 	showPanel
