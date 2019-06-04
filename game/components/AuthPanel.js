@@ -36,7 +36,10 @@ class AuthPanel extends React.Component {
 				<p style={pStyle}>Obtain your Rocket.Chat username, userId and avatar.</p>
 				<div className='buttonBox' style={buttonBoxStyle}>
 					<CancelButton onClick={() => hidePanel()} />
-					<AllowButton onClick={() => RocketChat.getUserInfo()}/>
+					<AllowButton onClick={() => {
+						hidePanel();
+						RocketChat.getUserInfo();
+					}}/>
 				</div>
 			</div>
 		);

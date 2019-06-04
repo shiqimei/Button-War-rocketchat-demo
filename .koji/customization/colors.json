@@ -2,8 +2,8 @@
   "colors": {
     "textColor": "#FFFFFF",
     "primaryColor": "#000000",
-    "playerOneColor": "#EC145F",
-    "playerTwoColor": "#149EEC"
+    "playerOneColor": "#149EEC",
+    "playerTwoColor": "#EC145F"
   },
   "@@editor": [
     {

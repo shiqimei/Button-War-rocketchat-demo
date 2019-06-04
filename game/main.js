@@ -192,7 +192,7 @@ class Game {
 			name: this.config.settings.playerOneName,
 			ctx: this.ctx,
 			image: playerOneImage,
-			x: right - playerWidth,
+			x: left,
 			y: centerY - playerHeight / 2,
 			width: playerWidth,
 			height: playerHeight,
@@ -205,7 +205,7 @@ class Game {
 			name: this.config.settings.playerTwoName,
 			ctx: this.ctx,
 			image: playerTwoImage,
-			x: left,
+			x: right - playerWidth,
 			y: centerY - playerHeight / 2,
 			width: playerWidth,
 			height: playerHeight,
@@ -408,15 +408,15 @@ class Game {
 		if ( target.id === 'button') {
 			reduxStore.dispatch(showPanel());
 
-			// this.setState({ current: 'countdown' });
-			// this.countdown(this.countDownLength, this.goText, () => {
-			// 	this.setState({ current: 'play' });
+			this.setState({ current: 'countdown' });
+			this.countdown(this.countDownLength, this.goText, () => {
+				this.setState({ current: 'play' });
 
-			// 	// if defaulting to have sound on by default
-			// 	// double mute() to warmup iphone audio here
-			// 	this.mute();
-			// 	this.mute();
-			// });
+				// if defaulting to have sound on by default
+				// double mute() to warmup iphone audio here
+				this.mute();
+				this.mute();
+			});
 
 		}
 	}
