@@ -3,8 +3,8 @@ import * as types from '../actions/actionsTypes';
 const initialState = {
 	authorized: false,
 	membersCount: 0,
-	player1: {},
-	player2: {}
+	player1: null,
+	player2: null
 };
 
 export default function App(state = initialState, action) {

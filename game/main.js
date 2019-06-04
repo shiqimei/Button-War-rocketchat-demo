@@ -408,15 +408,18 @@ class Game {
 		if ( target.id === 'button') {
 			reduxStore.dispatch(showPanel());
 
-			this.setState({ current: 'countdown' });
-			this.countdown(this.countDownLength, this.goText, () => {
-				this.setState({ current: 'play' });
+			const { App } = reduxStore.getState();
+			if (App.membersCount) {
+				this.setState({ current: 'countdown' });
+				this.countdown(this.countDownLength, this.goText, () => {
+					this.setState({ current: 'play' });
 
-				// if defaulting to have sound on by default
-				// double mute() to warmup iphone audio here
-				this.mute();
-				this.mute();
-			});
+					// if defaulting to have sound on by default
+					// double mute() to warmup iphone audio here
+					this.mute();
+					this.mute();
+				});
+			}
 
 		}
 	}
