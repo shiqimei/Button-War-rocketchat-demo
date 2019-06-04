@@ -72,8 +72,8 @@ const pStyle = {
 
 const buttonBoxStyle = {
 	display: 'flex',
-	width: 250,
-	marginTop: 20,
+	width: 220,
+	margin: '20px auto 5px',
 	justifyContent: 'space-around'
 };
 
