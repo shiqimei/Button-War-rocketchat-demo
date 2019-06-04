@@ -9,6 +9,11 @@ function createRequestTypes(base, types = defaultTypes) {
 	return res;
 }
 
+export const APP = createRequestTypes('APP', [
+	'PLAYER1_JOINED',
+	'PLAYER2_JOINED'
+]);
+
 export const AUTHPANEL = createRequestTypes('AUTHPANEL', [
 	...defaultTypes,
 	'SHOW_PANEL',
