@@ -133,7 +133,7 @@ canvas {
     position: absolute;
     margin: 0.5em;
     bottom: 0;
-    right: 0;
+    left: 0;
     transition: opacity 3s;
     font-size: 1.25em;
 }
@@ -144,7 +144,7 @@ canvas {
     position: absolute;
     margin: 0.5em;
     bottom: 0;
-    left: 0;
+    right: 0;
     transition: opacity 3s;
     font-size: 1.25em;
 }
