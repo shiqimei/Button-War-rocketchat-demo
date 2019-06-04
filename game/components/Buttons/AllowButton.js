@@ -1,15 +1,16 @@
 import React from 'react';
-import PropsTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 class AllowButton extends React.Component {
 	static propTypes = {
-		height: PropsTypes.number,
-		width: PropsTypes.number
+		onClick: PropTypes.func
 	}
 
 	render() {
+		const { onClick } = this.props;
+
 		return (
-			<button style={style}>
+			<button style={style} onClick={onClick}>
 				Allow
 			</button>
 		);

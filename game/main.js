@@ -21,6 +21,7 @@
  */
 
 import './assets/animations.css';
+import './reducers/windowMessage';
 
 import Koji from 'koji-tools';
 import './views/popupLayer';

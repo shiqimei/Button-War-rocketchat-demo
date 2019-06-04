@@ -4,6 +4,7 @@ import classNames from 'classnames';
 
 import AllowButton from './Buttons/AllowButton';
 import CancelButton from './Buttons/CancelButton';
+import RocketChat from '../lib/rocketchat-koji';
 
 import { connect } from 'react-redux';
 import * as authPanelActions from '../actions/authPanel';
@@ -35,7 +36,7 @@ class AuthPanel extends React.Component {
 				<p style={pStyle}>Obtain your Rocket.Chat username, userId and avatar.</p>
 				<div className='buttonBox' style={buttonBoxStyle}>
 					<CancelButton onClick={() => hidePanel()} />
-					<AllowButton />
+					<AllowButton onClick={() => RocketChat.getUserInfo()}/>
 				</div>
 			</div>
 		);
