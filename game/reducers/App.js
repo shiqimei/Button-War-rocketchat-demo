@@ -12,12 +12,14 @@ export default function App(state = initialState, action) {
 	case types.APP.PLAYER1_JOINED:
 		return {
 			...state,
-			player1: action.payload
+			player1: action.payload,
+			membersCount: 1
 		};
 	case types.APP.PLAYE2_JOINED:
 		return {
 			...state,
-			player2: action.payload
+			player2: action.payload,
+			membersCount: 2
 		};
 	default:
 		return state;
