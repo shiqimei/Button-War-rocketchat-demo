@@ -236,12 +236,11 @@ class Game {
 			this.overlay.hide('loading');
 			this.canvas.style.opacity = 1;
 
-			this.overlay.setBanner(this.config.settings.name);
-			this.overlay.setButton(this.config.settings.startText);
-			this.overlay.setInstructions({
-				desktop: this.config.settings.instructionsDesktop,
-				mobile: this.config.settings.instructionsMobile
-			});
+			// this.overlay.setButton(this.config.settings.startText);
+			// this.overlay.setInstructions({
+			// 	desktop: this.config.settings.instructionsDesktop,
+			// 	mobile: this.config.settings.instructionsMobile
+			// });
 
 			this.overlay.show('stats');
 

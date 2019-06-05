@@ -18,26 +18,22 @@ class StartButton extends React.Component {
 }
 
 const Button = styled.div`
-	position: absolute;
-	top: 50%;
-  	left: 50%;
-  	transform: translate(-50%, -100%);
-	padding: 1.2vh 2em;
+    flex: auto;
+    margin: 0 auto;
+    padding: 1.2vh 2em;
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-	box-shadow: 0 0 5px 0 rgb(120, 120, 120);
-	color: #191919;
-	background-color: white;
 	font-size: 18px;
 	font-weight: 700;
-	border-radius: 100px;
-	text-align: center;
-	cursor: pointer;
-	animation: button 2s ease-in-out infinite;
-	transition: opacity 1s, background-color 0.5s;
-	
-	:hover {
-		color: red;
-	}
+    box-shadow: 0 0 5px 0 rgb(120, 120, 120);
+    color: #191919;
+    background-color: white!important;
+    font-size: 18px;
+    border-radius: 100px;
+    margin: 10px auto;
+    text-align: center;
+    cursor: pointer;
+    animation: button 2s ease-in-out infinite;
+    transition: opacity 1s, background-color 0.5s;
 `;
 
 export default StartButton;

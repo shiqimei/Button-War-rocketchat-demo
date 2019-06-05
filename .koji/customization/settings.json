@@ -2,8 +2,7 @@
     "settings": {
       "name": "Button War",
       "startText": "Login to Start",
-      "instructionsMobile": "Tap the buttons to win!",
-      "instructionsDesktop": "Tap the buttons to win! <br> Player 1: Press Right Shift <br> Player 2: Press Left Shift",
+      "instructions": "Tap the buttons to win! \n Player 1: Press Right Shift \n Player 2: Press Left Shift",
       "goText": "Go!",
       "playerOneName": "Player 1",
       "playerTwoName": "Player 2",
@@ -30,12 +29,8 @@
             "name": "Start Button Text"
           },
           {
-            "key": "instructionsMobile",
-            "name": "How to play the game on mobile"
-          },
-          {
-            "key": "instructionsDesktop",
-            "name": "How to play the game on desktop"
+            "key": "instructions",
+            "name": "How to play the game"
           },
           {
             "key": "goText",
