@@ -88,7 +88,7 @@ const StyledCenter = styled.div`
 	z-index: 999;
 `;
 
-const Container = styled.p`
+const Container = styled.div`
 	text-align: center;
 `;
 
