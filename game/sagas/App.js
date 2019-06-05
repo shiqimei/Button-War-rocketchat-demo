@@ -9,7 +9,7 @@ const socket = io.connect(SERVER_URL);
 
 const handlePlayer1JoinRequest = function* handlePlayer1JoinRequest({ payload }) {
 	try {
-		yield call(socket.emit(APP.PLAYER1_JOIN_REQUEST, payload));
+		yield socket.emit(APP.PLAYER1_JOIN_REQUEST, payload);
 		socket.on(APP.PLAYER1_JOINED, player1 => {
 			put(AppActions.player1Joined(player1));
 		});

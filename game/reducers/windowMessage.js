@@ -15,10 +15,10 @@ window.addEventListener('message', ({ data }) => {
 			reduxStore.dispatch(playerAuthorizedAction(connected));
 
 			const { App } = reduxStore.getState();
-			const { player1 } = App;
+			const { player, player1 } = App;
 
 			if (!player1) {
-				reduxStore.dispatch(player1JoinRequestAction());
+				reduxStore.dispatch(player1JoinRequestAction(player));
 				return;
 			}
 		}
