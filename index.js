@@ -1,3 +1,6 @@
+import 'babel-polyfill';
+import 'babel-core/register';
+
 import Koji from 'koji-tools';
 Koji.pageLoad();
 
