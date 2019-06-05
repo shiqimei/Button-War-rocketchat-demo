@@ -16,96 +16,96 @@
 import { bounded } from '../helpers/utils.js'
 
 class Sprite {
-    constructor({ x, y, width, height, speed, direction, bounds }) {
-        // x and y
-        this.x = x;
-        this.y = y;
+	constructor({ x, y, width, height, speed, direction, bounds }) {
+		// x and y
+		this.x = x;
+		this.y = y;
 
-        // previous x and y
-        this.px = x;
-        this.py = y;
+		// previous x and y
+		this.px = x;
+		this.py = y;
 
-        // center x and y
-        this.cx = x + (width/2);
-        this.cy = y + (height/2);
+		// center x and y
+		this.cx = x + (width/2);
+		this.cy = y + (height/2);
 
-        // velocity x and y
-        this.vx = 0;
-        this.vy = 0;
+		// velocity x and y
+		this.vx = 0;
+		this.vy = 0;
 
-        // width and height
-        this.width = width;
-        this.height = height;
+		// width and height
+		this.width = width;
+		this.height = height;
 
-        // radius
-        this.radius = (width + height) / 4;
+		// radius
+		this.radius = (width + height) / 4;
 
-        // bounding box
-        this.box = { top: this.y, right: this.x + this.width, bottom: this.y + this.height, left: this.x };
+		// bounding box
+		this.box = { top: this.y, right: this.x + this.width, bottom: this.y + this.height, left: this.x };
 
-        // speed of sprite
-        this.speed = speed || 1;
+		// speed of sprite
+		this.speed = speed || 1;
 
-        // direction
-        this.direction = direction || 'right';
+		// direction
+		this.direction = direction || 'right';
 
-        // bounds
-        this.bounds = bounds;
-    }
+		// bounds
+		this.bounds = bounds;
+	}
 
-    move(x, y, m) {
-        let dx = x === 0 ? this.x : this.x + (x * this.speed * m);
-        let dy = y === 0 ? this.y : this.y + (y * this.speed * m);
+	move(x, y, m) {
+		let dx = x === 0 ? this.x : this.x + (x * this.speed * m);
+		let dy = y === 0 ? this.y : this.y + (y * this.speed * m);
         
-        this.setX(dx);
-        this.setY(dy);
+		this.setX(dx);
+		this.setY(dy);
 
-        // set direction
-        if (x < 0) { this.direction = 'right'; }
-        if (x > 0) { this.direction = 'left'; }
-    }
+		// set direction
+		if (x < 0) { this.direction = 'right'; }
+		if (x > 0) { this.direction = 'left'; }
+	}
 
-    setX(nx) {
-        // apply x bounds
-        const x = bounded(nx, this.bounds.left, this.bounds.right - this.width);
+	setX(nx) {
+		// apply x bounds
+		const x = bounded(nx, this.bounds.left, this.bounds.right - this.width);
 
-        this.px = this.x; // store previous x value
-        this.x = x; // set x
+		this.px = this.x; // store previous x value
+		this.x = x; // set x
 
-        this.cx = this.x + (this.width/2); // set center x
-        this.vx = this.x - this.px; // set velocity x
+		this.cx = this.x + (this.width/2); // set center x
+		this.vx = this.x - this.px; // set velocity x
 
-        // update bounding box
-        this.setBox({ left: this.x, right: this.x + this.width });
-    }
+		// update bounding box
+		this.setBox({ left: this.x, right: this.x + this.width });
+	}
 
-    setY(ny) {
-        // apply x bounds
-        const y = bounded(ny, this.bounds.top, this.bounds.bottom - this.height);
+	setY(ny) {
+		// apply x bounds
+		const y = bounded(ny, this.bounds.top, this.bounds.bottom - this.height);
 
-        this.py = this.y; // store previous y value
-        this.y = y; // set y
+		this.py = this.y; // store previous y value
+		this.y = y; // set y
 
-        this.cy = this.y + (this.height/2); // set center y
-        this.vy = this.y - this.py; // set velocity y
+		this.cy = this.y + (this.height/2); // set center y
+		this.vy = this.y - this.py; // set velocity y
 
-        // update bounding box
-        this.setBox({ top: this.y, bottom: this.y + this.height });
-    }
+		// update bounding box
+		this.setBox({ top: this.y, bottom: this.y + this.height });
+	}
 
-    setBox(box) {
-        this.box = {
-            ...this.box,
-            ...box
-        }
-    }
+	setBox(box) {
+		this.box = {
+			...this.box,
+			...box
+		}
+	}
 
-    setBounds(bounds) {
-        this.bounds = {
-            ...this.bounds,
-            ...bounds
-        }
-    }
+	setBounds(bounds) {
+		this.bounds = {
+			...this.bounds,
+			...bounds
+		};
+	}
 }
 
 export default Sprite;

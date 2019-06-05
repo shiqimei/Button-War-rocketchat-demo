@@ -14,29 +14,29 @@ import { isBounded } from '../helpers/utils.js';
 import ImageSprite from '../objects/imageSprite.js';
 
 class Button extends ImageSprite {
-    constructor(options) {
-        super(options);
+	constructor(options) {
+		super(options);
 
-        this.name = options.name;
-        this.color = options.color;
-        this.score = 0;
-    }
+		this.name = options.name;
+		this.color = options.color;
+		this.score = 0;
+	}
 
-    scorePoint(n) {
-        this.score += n;
-    }
+	scorePoint(n) {
+		this.score += n;
+	}
 
-    tap({ x, y }) {
-        return this.inBox(x, y);
-    }
+	tap({ x, y }) {
+		return this.inBox(x, y);
+	}
     
-    inBox(x, y) {
-        // check x and y against box
-        const inX = isBounded(x, this.box.left, this.box.right);
-        const inY = isBounded(y, this.box.top, this.box.bottom);
+	inBox(x, y) {
+		// check x and y against box
+		const inX = isBounded(x, this.box.left, this.box.right);
+		const inY = isBounded(y, this.box.top, this.box.bottom);
 
-        return inX && inY;
-    }
+		return inX && inY;
+	}
 }
 
 export default Button;

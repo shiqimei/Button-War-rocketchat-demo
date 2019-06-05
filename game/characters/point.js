@@ -14,33 +14,33 @@
 import { hexToRgbA } from '../helpers/utils.js';
 
 class Point {
-    constructor({ctx, text, x, y, font, fontSize, color}) {
-        this.ctx = ctx;
+	constructor({ctx, text, x, y, font, fontSize, color}) {
+		this.ctx = ctx;
 
-        this.x = x;
-        this.y = y;
+		this.x = x;
+		this.y = y;
 
-        this.ox = x;
-        this.oy = y;
+		this.ox = x;
+		this.oy = y;
 
-        this.speed = Math.random() * 5 + 5;
+		this.speed = Math.random() * 5 + 5;
 
-        this.text = text;
+		this.text = text;
 
-        // this.color = hexToHSL(color);
-        this.color = color;
-        this.font = `bold ${fontSize}px ${font}`
-        this.alpha = 1;
-    }
+		// this.color = hexToHSL(color);
+		this.color = color;
+		this.font = `bold ${fontSize}px ${font}`;
+		this.alpha = 1;
+	}
     
-    draw() {
-        this.y -= this.speed;
-        this.alpha = this.y / this.oy
+	draw() {
+		this.y -= this.speed;
+		this.alpha = this.y / this.oy;
 
-        this.ctx.font = this.font;
-        this.ctx.fillStyle = hexToRgbA(this.color, this.alpha);
-        this.ctx.fillText(this.text, this.x, this.y )
-    }
+		this.ctx.font = this.font;
+		this.ctx.fillStyle = hexToRgbA(this.color, this.alpha);
+		this.ctx.fillText(this.text, this.x, this.y );
+	}
 }
 
 export default Point;

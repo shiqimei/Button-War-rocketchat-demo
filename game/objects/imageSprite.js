@@ -15,38 +15,38 @@
 import Sprite from './sprite.js';
 
 class ImageSprite extends Sprite {
-    constructor(options) {
-        super(options);
+	constructor(options) {
+		super(options);
 
-        this.ctx = options.ctx;
-        this.image = options.image;
-    }
+		this.ctx = options.ctx;
+		this.image = options.image;
+	}
 
-    draw() {
-        // save canvas context
-        this.ctx.save();
+	draw() {
+		// save canvas context
+		this.ctx.save();
 
-        // code for flipping image to match direction
-        let scaleX = this.direction === 'left' ? -1 : 1;
-        let xPosition = this.direction === 'left' ? -1 * this.x : this.x;
-        let trX = this.direction === 'left' ? this.width : 0;
+		// code for flipping image to match direction
+		let scaleX = this.direction === 'left' ? -1 : 1;
+		let xPosition = this.direction === 'left' ? -1 * this.x : this.x;
+		let trX = this.direction === 'left' ? this.width : 0;
 
-        this.ctx.translate(trX, 0);
-        this.ctx.scale(scaleX, 1);
+		this.ctx.translate(trX, 0);
+		this.ctx.scale(scaleX, 1);
 
-        // draw the image to canvas
-        this.ctx.drawImage(this.image, xPosition, this.y, this.width, this.height);
+		// draw the image to canvas
+		this.ctx.drawImage(this.image, xPosition, this.y, this.width, this.height);
 
-        /*
+		/*
         this.ctx.rect(this.box.left, this.box.top, this.width, this.height);
         this.ctx.lineWidth = "1"; 
         this.ctx.strokeStyle = "red"; 
         this.ctx.stroke(); 
         */
 
-        // restore canvas context
-        this.ctx.restore();
-    }
+		// restore canvas context
+		this.ctx.restore();
+	}
 }
 
 export default ImageSprite;
