@@ -6,9 +6,7 @@ import Koji from 'koji-tools';
 import './views/ReactLayer';
 import reduxStore from './createStore';
 import * as AppActions from './actions/App';
-import {
-	showPanel
-} from './actions/authPanel';
+
 
 import {
 	requestAnimationFrame,
@@ -245,12 +243,8 @@ class Game {
 			// this.setState({ current: 'play' });
 		}
 
-		console.log(App.prev);
 		if (App.current === 'countdown') {
-			if (App.prev === 'ready') {
-				this.overlay.hide(['banner', 'button', 'instructions']);
-			}
-
+	
 			// player bounce
 			let dy = Math.cos(this.frame.count / 5);
 
@@ -357,9 +351,9 @@ class Game {
 		const { App } = reduxStore.getState();
 
 		// ignore when loading or countdonw
-		if (['loading', 'countdown'].includes(App.current)) {
-			return;
-		}
+		// if (['loading', 'countdown'].includes(App.current)) {
+		// 	return;
+		// }
 
 		// reload when player has won
 		if (App.current.includes('win') && Date.now() - this.wintime > 3000) {
@@ -379,6 +373,7 @@ class Game {
 		}
 
 		// button
+		console.log(target.id);
 		if ( target.id === 'button') {
 			const { App } = reduxStore.getState();
 

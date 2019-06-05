@@ -3,25 +3,41 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import * as AppActions from '../../actions/App';
+import {
+	showPanel
+} from '../../actions/authPanel';
 
 @connect(state => ({
-	state: state
+	authorized: state.App.authorized
 }), dispatch => ({
-	startGame: () => dispatch(AppActions.startGame())
+	startGame: () => dispatch(AppActions.startGame()),
+	showPanel: () => dispatch(showPanel())
 }))
 
 class StartButton extends React.Component {
 	static propTypes = {
 		settings: PropTypes.object.isRequired,
-		startGame: PropTypes.func
+		startGame: PropTypes.func,
+		showPanel: PropTypes.func,
+		authorized: PropTypes.bool
+	}
+
+	_onStartGameClick() {
+		const { startGame, authorized, showPanel } = this.props;
+
+		if (!authorized) {
+			showPanel();
+		} else {
+			startGame();
+		}
 	}
 
 	render() {
-		const { settings, startGame } = this.props;
+		const { settings } = this.props;
 		const { startText } = settings;
 
 		return (
-			<Button onClick={() => startGame()}>
+			<Button onClick={() => this._onStartGameClick()}>
 				{ startText }
 			</Button>
 		);
