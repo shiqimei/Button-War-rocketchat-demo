@@ -8,22 +8,22 @@ import InfoBox from '../components/InfoBox';
 import CenterContainer from '../components/CenterContainer';
 
 @connect(state => ({
-	player1: state.App.player1
+	player: state.App.player
 }))
 
 class App extends React.Component {
 	static propTypes = {
-		player1: PropTypes.object
+		player: PropTypes.object
 	}
 
 	render() {
-		const { player1 } = this.props;
+		const { player } = this.props;
 
 		return (
 			<React.Fragment>
 				<AuthPanel />
 				<CenterContainer />
-				<InfoBox player={player1} />
+				<InfoBox player={player} />
 			</React.Fragment>	
 		);
 	}

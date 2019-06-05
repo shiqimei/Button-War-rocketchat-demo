@@ -12,7 +12,9 @@ import gameStatus from '../constants/gameStatus';
 	settings: state.App.settings,
 	prev: state.App.prev,
 	current: state.App.current,
-	authorized: state.App.authorized
+	authorized: state.App.authorized,
+	loading: state.App.loading,
+	player1: state.App.player1
 }))
 
 class CenterContainer extends React.Component {
@@ -20,7 +22,9 @@ class CenterContainer extends React.Component {
 		settings: PropTypes.object,
 		prev: PropTypes.string,
 		current: PropTypes.string,
-		authorized: PropTypes.bool
+		authorized: PropTypes.bool,
+		player1: PropTypes.object,
+		loading: PropTypes.bool
 	}
 
 	renderNotice() {
@@ -56,12 +60,16 @@ class CenterContainer extends React.Component {
 	}
 
 	render() {
-		const { settings, current, authorized } = this.props;
+		const {
+			settings, current, authorized, player1, loading
+		} = this.props;
 
 		return current === gameStatus.COUNTDOWN ? null : (
 			<StyledCenter>
 				<Banner>{ settings.name }</Banner>
-				{ authorized ? this.renderNotice() : this.renderStartButton(settings) }
+				{ !authorized ? this.renderStartButton(settings) : null }
+				{ loading ? this.renderLoading() : null }
+				{ player1 ? this.renderNotice() : null }
 				{ this.renderInstructions(settings.instructions) }
 			</StyledCenter>
 		);
@@ -107,7 +115,6 @@ const Instructions = styled.div`
 	flex: auto;
 	color: white;
 	font-family: 'Righteous';
-	font-size: calc((5vh + 5vw) / 2);
 	margin-top: 10px;
     padding: 1em;
 	font-size: 0.5em;
@@ -115,6 +122,9 @@ const Instructions = styled.div`
     border-radius: 100px;
     text-align: center;
 	transition: opacity 1s;
+	&>p {
+		font-size: 20px;
+	}
 `;
 
 export default CenterContainer;
