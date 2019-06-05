@@ -7,8 +7,8 @@ A competitive button mashing game, which is the exploration that integrates the 
 ## Features
 | Name | Status |
 | :-: | :-: |
-| Rocket.Chat Authorization | Working in Progress |
-| Websocket | √ |
+| Rocket.Chat Authorization | √ |
+| Websocket | Working in Progress |
 | ... | ... |
 
 ## VCC's
