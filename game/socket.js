@@ -9,6 +9,6 @@ const socket = io.connect(SERVER_URL);
 
 console.dir(socket);
 
-socket.on(APP.PLAYER1_JOIED, player1 => {
+socket.on(APP.PLAYER1_JOINED, player1 => {
 	reduxStore.dispatch(AppActions.player1Joined(player1));
 });
