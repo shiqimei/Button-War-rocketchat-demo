@@ -7,6 +7,7 @@ const PORT = 3003;
 const http = require('http');
 const server = http.createServer(app);
 const io = require('socket.io')(server);
+const Actions = require('./constants/actions');
 
 app.use(morgan('dev'));
 
@@ -33,7 +34,10 @@ io.on('connection', (socket) => {
 		console.log(socket.id, ' disconnected');
 	});
 
-	
+	socket.on(Actions.PLAYER1_JOIN_REQUEST, player => {
+		console.log(Actions.PLAYER1_JOINED);
+		io.emit(Actions.PLAYER1_JOINED, player);
+	});
 });
 
 server.listen(PORT, () => {
