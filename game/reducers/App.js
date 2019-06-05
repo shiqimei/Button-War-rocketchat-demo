@@ -8,6 +8,8 @@ const initialState = {
 	membersCount: 0,
 	player1: null,
 	player2: null,
+	player1Score: 0,
+	player2Score: 0,
 	settings: settings,
 	current: 'loading',
 	prev: 'loading'
@@ -22,12 +24,18 @@ export default function App(state = initialState, action) {
 			membersCount: 1,
 			authorized: true
 		};
-	case types.APP.PLAYE2_JOINED:
+	case types.APP.PLAYER2_JOINED:
 		return {
 			...state,
 			player2: action.payload,
 			membersCount: 2,
 			authorized: true
+		};
+	case types.APP.SCORE_UPDATED:
+		return {
+			...state,
+			player1Score: action.payload.player1Score,
+			player2Score: action.payload.player2Score
 		};
 	case types.APP.READY:
 		return {

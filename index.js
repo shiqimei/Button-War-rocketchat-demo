@@ -1,6 +1,5 @@
 import Koji from 'koji-tools';
 Koji.pageLoad();
-import io from 'socket.io-client';
 
 // import Game and Overlay
 import Game from './game/main.js';
@@ -14,5 +13,3 @@ const config = Koji.config;
 const overlay = new Overlay(gameOverlay);
 const game = new Game(gameScreen, overlay, topbar, config);
 game.load();
-
-io('http://localhost:3003');

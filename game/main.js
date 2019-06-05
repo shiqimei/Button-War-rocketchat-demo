@@ -2,6 +2,7 @@ import './assets/style.css';
 import './assets/animations.css';
 import './reducers/windowMessage';
 
+import './socket';
 import Koji from 'koji-tools';
 import './views/ReactLayer';
 import reduxStore from './createStore';
