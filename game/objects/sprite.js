@@ -13,7 +13,7 @@
  * 
  */
 
-import { bounded } from '../helpers/utils.js'
+import { bounded } from '../helpers/utils.js';
 
 class Sprite {
 	constructor({ x, y, width, height, speed, direction, bounds }) {
@@ -97,7 +97,7 @@ class Sprite {
 		this.box = {
 			...this.box,
 			...box
-		}
+		};
 	}
 
 	setBounds(bounds) {

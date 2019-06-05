@@ -134,7 +134,7 @@ const loadFont = (key, fontName) => {
 			fontactive: function (familyName) {
 				resolve({...result, ...{ value: familyName }});
 			}
-		}
+		};
 		WebFont.load(font);
 	});
 };

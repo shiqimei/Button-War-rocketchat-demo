@@ -17,31 +17,38 @@ import { config as globalConfig } from 'koji-tools';
 }))
 
 class AuthPanel extends React.Component {
-	static propTypes = {
-		show: PropTypes.bool
+	constructor(props) {
+		super(props);
+		this.ref = React.createRef();
 	}
 
-	renderPanel(show) {
+	static propTypes = {
+		show: PropTypes.bool,
+		showPanel: PropTypes.func,
+		hidePanel: PropTypes.func
+	}
+
+	renderPanel() {
 		const { hidePanel } = this.props;
 		const { settings } = globalConfig;
 		
 		return (
-			<div style={mainStyle} ref='main' className='wbBounceIn'>
+			<div style={mainStyle} ref={this.ref} className='wbBounceIn'>
 				<h3 style={h3Style} > { settings.name } <span style={pStyle}>Apply</span></h3>
 				<p style={pStyle}>Obtain your Rocket.Chat username, userId and avatar.</p>
 				<div className='buttonBox' style={buttonBoxStyle}>
 					<CancelButton onClick={() => {
-						this.refs.main.className = 'wbBounceOut';
+						this.ref.current.className = 'wbBounceOut';
 						setTimeout( () => {
-							this.refs.main.className = '';
+							this.ref.current.className = '';
 							hidePanel();
 						}, 200);
 					}} />
 					<AllowButton onClick={() => {
 						//TODO dirty bounceOut animation implement. Need to refactor later :(
-						this.refs.main.className = 'wbBounceOut';
+						this.ref.current.className = 'wbBounceOut';
 						setTimeout( () => {
-							this.refs.main.className = '';
+							this.ref.current.className = '';
 							hidePanel();
 						}, 200);
 						RocketChat.getUserInfo();
@@ -54,7 +61,7 @@ class AuthPanel extends React.Component {
 	render() {
 		const { show } = this.props;
 
-		return show ? this.renderPanel(show) : null;
+		return show ? this.renderPanel() : null;
 	}
 }
 
