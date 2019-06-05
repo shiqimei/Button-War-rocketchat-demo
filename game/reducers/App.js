@@ -6,6 +6,7 @@ const { settings } = config;
 const initialState = {
 	authorized: false,
 	membersCount: 0,
+	player: null,
 	player1: null,
 	player2: null,
 	player1Score: 0,
@@ -17,19 +18,23 @@ const initialState = {
 
 export default function App(state = initialState, action) {
 	switch (action.type) {
+	case types.APP.AUTHORIZED:
+		return {
+			...state,
+			player: action.payload,
+			authorized: true
+		};
 	case types.APP.PLAYER1_JOINED:
 		return {
 			...state,
 			player1: action.payload,
-			membersCount: 1,
-			authorized: true
+			membersCount: 1
 		};
 	case types.APP.PLAYER2_JOINED:
 		return {
 			...state,
 			player2: action.payload,
-			membersCount: 2,
-			authorized: true
+			membersCount: 2
 		};
 	case types.APP.SCORE_UPDATED:
 		return {

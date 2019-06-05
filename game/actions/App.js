@@ -1,5 +1,12 @@
 import * as types from './actionsTypes';
 
+export function authorized(player) {
+	return {
+		type: types.APP.AUTHORIZED,
+		payload: player
+	};
+}
+
 export function player1JoinRequest(player1) {
 	return {
 		type: types.APP.PLAYER1_JOIN_REQUEST,

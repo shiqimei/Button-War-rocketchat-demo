@@ -10,7 +10,7 @@ function createRequestTypes(base, types = defaultTypes) {
 }
 
 export const APP = createRequestTypes('APP', [
-	'',
+	'AUTHORIZED',
 	'PLAYER1_JOIN_REQUEST',
 	'PLAYER2_JOIN_REQUEST',
 	'PLAYER1_JOIED',
