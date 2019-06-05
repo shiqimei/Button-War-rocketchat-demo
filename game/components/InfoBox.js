@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import { connect } from 'react-redux';
-
 class InfoBox extends React.Component {
 	static propTypes = {
 		player: PropTypes.object

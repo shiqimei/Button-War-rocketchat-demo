@@ -26,9 +26,9 @@ import Overlay from './game/overlay.js';
 // gameScreen is the <canvas> element where the game is displayed
 // gameOverlay is where the where start button, score, lives,
 // play and pause buttons etc will be displayed
-const gameScreen = document.getElementById("gameScreen");
-const gameOverlay = document.getElementById("gameOverlay");
-const topbar = document.getElementById("topBar");
+const gameScreen = document.getElementById('gameScreen');
+const gameOverlay = document.getElementById('gameOverlay');
+const topbar = document.getElementById('topBar');
 
 // create new overlay for game
 // create new game and load it
@@ -37,4 +37,4 @@ const overlay = new Overlay(gameOverlay)
 const game = new Game(gameScreen, overlay, topbar, config);
 game.load();
 
-const socket = io('http://localhost:3003');
+io('http://localhost:3003');

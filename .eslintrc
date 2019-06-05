@@ -6,10 +6,20 @@
 		"commonjs": true
 	},
 	"parser": "babel-eslint",
-	"extends": "eslint:recommended",
+	"extends": [
+		"eslint:recommended",
+		"plugin:react/recommended"
+	],
 	"parserOptions": {
 		"ecmaVersion": 2018,
 		"sourceType": "module"
+	},
+	"settings": {
+		"react": {
+			"createClass": "createReactClass",
+			"pragma": "React",
+			"version": "detect"
+		  }
 	},
 	"rules": {
 		"indent": [

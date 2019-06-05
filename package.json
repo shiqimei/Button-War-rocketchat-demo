@@ -8,6 +8,7 @@
     "start": "npm run dev",
     "dev": "npx parcel index.html",
     "build": "npx parcel build index.html",
+    "lint": "eslint . --quiet",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
