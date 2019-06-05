@@ -1,5 +1,5 @@
 const express = require('express');
-const path = require('path');
+const mongoose = require('mongoose');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const app = express();
@@ -13,12 +13,27 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-io.on('connection', (socket) => {
-	console.log('a user connected:', socket.id);
+// database
+mongoose.connect('mongodb://localhost:27017/local');
+const db = mongoose.connection;
 
-	socket.on('disconnect', function() {
-		console.log('user disconnected');
+db.on('error', () => {
+	console.error('Failed to connect to mongoose!');
+});
+
+db.on('open', () => {
+	console.info('Connected to mongoose.');
+});
+
+// socket.io
+io.on('connection', (socket) => {
+	console.log(socket.id, ' connected');
+
+	socket.on('disconnect', () => {
+		console.log(socket.id, ' disconnected');
 	});
+
+	
 });
 
 server.listen(PORT, () => {
