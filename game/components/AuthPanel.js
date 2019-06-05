@@ -7,10 +7,10 @@ import RocketChat from '../lib/rocketchat-koji';
 
 import { connect } from 'react-redux';
 import * as authPanelActions from '../actions/authPanel';
-import { config as globalConfig } from 'koji-tools';
 
 @connect(state => ({
-	show: state.authPanel.show
+	show: state.authPanel.show,
+	settings: state.App.settings
 }), dispatch => ({
 	showPanel: () => dispatch(authPanelActions.showPanel()),
 	hidePanel: () => dispatch(authPanelActions.hidePanel())
@@ -24,13 +24,13 @@ class AuthPanel extends React.Component {
 
 	static propTypes = {
 		show: PropTypes.bool,
+		settings: PropTypes.object,
 		showPanel: PropTypes.func,
 		hidePanel: PropTypes.func
 	}
 
 	renderPanel() {
-		const { hidePanel } = this.props;
-		const { settings } = globalConfig;
+		const { settings, hidePanel } = this.props;
 		
 		return (
 			<div style={mainStyle} ref={this.ref} className='wbBounceIn'>

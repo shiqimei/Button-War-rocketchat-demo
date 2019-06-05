@@ -1,10 +1,13 @@
 import * as types from '../actions/actionsTypes';
+import { config  } from 'koji-tools';
 
+const { settings } = config;
 const initialState = {
 	authorized: false,
 	membersCount: 0,
 	player1: null,
-	player2: null
+	player2: null,
+	settings: settings
 };
 
 export default function App(state = initialState, action) {
