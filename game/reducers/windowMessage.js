@@ -1,5 +1,5 @@
 import reduxStore from '../createStore';
-import { player1Joined as player1JoinedAction} from '../actions/App';
+import { authorized as playerAuthorizedAction } from '../actions/App';
 
 window.addEventListener('message', ({ data }) => {
 	if(!data.rcEmbeddedSdk) {
@@ -9,7 +9,7 @@ window.addEventListener('message', ({ data }) => {
 	try {
 		if (data.rcEmbeddedSdk.action === 'connected') {
 			const { connected } = data.rcEmbeddedSdk;
-			reduxStore.dispatch(player1JoinedAction(connected));
+			reduxStore.dispatch(playerAuthorizedAction(connected));
 		}
 	} catch (err) {
 		console.warn(err);
