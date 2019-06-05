@@ -1,25 +1,3 @@
-/**
- * game/main.js
- * 
- * What it Does:
- *   This file is the main game class
- *   Important parts are the load, create, and play functions
- *   
- *   Load: is where images, sounds, and fonts are loaded
- *   
- *   Create: is where game elements and characters are created
- *   
- *   Play: is where game characters are updated according to game play
- *   before drawing a new frame to the screen, and calling play again
- *   this creates an animation just like the pages of a flip book
- * 
- *   Other parts include boilerplate for requesting and canceling new frames
- *   handling input events, pausing, muting, etc.
- * 
- * What to Change:
- *   Most things to change will be in the play function
- */
-
 import './assets/style.css';
 import './assets/animations.css';
 import './reducers/windowMessage';
