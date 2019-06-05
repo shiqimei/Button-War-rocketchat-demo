@@ -59,12 +59,6 @@ canvas {
     font-size: calc((5vh + 5vw) / 2);
 }
 
-@keyframes button {
-    0% { transform: scale(1, 1) }
-    50% { transform: scale(0.98,0.98) }
-    100% { transform: scale(1,1) }
-}
-
 .container #loading {
     opacity: 1;
     margin: 0 auto;
@@ -80,29 +74,6 @@ canvas {
     border-radius: 100px;
     text-align: center;
     transition: opacity 1s;
-}
-
-#button {
-    visibility: hidden;
-    opacity: 0;
-    flex: auto;
-    margin: 0 auto;
-    padding: 1.2vh 2em;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    box-shadow: 0 0 5px 0 rgb(120, 120, 120);
-    color: #191919;
-    background-color: white!important;
-    font-size: 18px;
-    border-radius: 100px;
-    margin: 10px auto;
-    text-align: center;
-    cursor: pointer;
-    animation: button 2s ease-in-out infinite;
-    transition: opacity 1s, background-color 0.5s;
-}
-
-#button:hover {
-    background-color: rgba(255, 255, 255,0.5);
 }
 
 /*

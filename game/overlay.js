@@ -6,7 +6,6 @@ class Overlay {
 
 		this.loading = node.querySelector('#loading');
 		this.banner = node.querySelector('#banner');
-		this.button = node.querySelector('#button');
 		this.instructions = node.querySelector('#instructions');
 		this.countdown = node.querySelector('#countdown');
 
@@ -22,12 +21,6 @@ class Overlay {
 	setBanner(message) {
 		this.banner.textContent = message;
 		this.show('banner');
-	}
-
-	setButton(message) {
-		// fix for safari
-		this.button.innerHTML = `<span id="buttonspan">${message}</span>`;
-		this.show('button');
 	}
 
 	setInstructions({ desktop, mobile }) {
@@ -103,7 +96,6 @@ class Overlay {
 	applyStyles() {
 		this.container.style.color = this.styles.textColor;
 		this.container.style.fontFamily = this.styles.fontFamily;
-		this.button.style.backgroundColor = this.styles.primaryColor;
 	}
 }
 
