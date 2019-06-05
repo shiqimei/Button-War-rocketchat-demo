@@ -5,6 +5,7 @@ import './reducers/windowMessage';
 import Koji from 'koji-tools';
 import './views/ReactLayer';
 import reduxStore from './createStore';
+import * as AppActions from './actions/App';
 import {
 	showPanel
 } from './actions/authPanel';
@@ -46,7 +47,6 @@ class Game {
 
 		// game settings
 		this.state = {
-			current: 'loading',
 			prev: '',
 			paused: false,
 			muted: localStorage.getItem('game-muted') === 'true'
@@ -209,12 +209,12 @@ class Game {
 		// set overlay styles
 		this.overlay.setStyles({...this.config.colors, ...this.config.settings});
 
-		this.setState({ current: 'ready' });
+		reduxStore.dispatch(AppActions.ready());
 		this.play();
 	}
 
 	play() {
-		// update game characters
+		const { App } = reduxStore.getState();
 
 		// clear the screen of the last picture
 		this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
@@ -232,15 +232,9 @@ class Game {
 		this.overlay.setScore2(this.player2.name, this.player2.score);
 
 		// ready to play
-		if (this.state.current === 'ready') {
+		if (App.current === 'ready') {
 			this.overlay.hide('loading');
 			this.canvas.style.opacity = 1;
-
-			// this.overlay.setButton(this.config.settings.startText);
-			// this.overlay.setInstructions({
-			// 	desktop: this.config.settings.instructionsDesktop,
-			// 	mobile: this.config.settings.instructionsMobile
-			// });
 
 			this.overlay.show('stats');
 
@@ -251,9 +245,9 @@ class Game {
 			// this.setState({ current: 'play' });
 		}
 
-		// game countdown
-		if (this.state.current === 'countdown') {
-			if (this.state.prev === 'ready') {
+		console.log(App.prev);
+		if (App.current === 'countdown') {
+			if (App.prev === 'ready') {
 				this.overlay.hide(['banner', 'button', 'instructions']);
 			}
 
@@ -269,7 +263,7 @@ class Game {
 		}
 
 		// game play
-		if (this.state.current === 'play') {
+		if (App.current === 'play') {
 			// play music
 			if (!this.state.muted) { this.sounds.backgroundMusic.play(); }
 
@@ -300,12 +294,12 @@ class Game {
 		}
 
 		// player one wins
-		if (this.state.current === 'win-player1') {
+		if (App.current === 'win-player1') {
 			this.overlay.setBanner(this.config.settings.playerOneWinText);
 		}
 
 		// player two wins
-		if (this.state.current === 'win-player2') {
+		if (App.current === 'win-player2') {
 			this.overlay.setBanner(this.config.settings.playerTwoWinText);
 		}
 
@@ -360,13 +354,15 @@ class Game {
 
 	// event listeners
 	handleClicks({ target }) {
+		const { App } = reduxStore.getState();
+
 		// ignore when loading or countdonw
-		if (['loading', 'countdown'].includes(this.state.current)) {
+		if (['loading', 'countdown'].includes(App.current)) {
 			return;
 		}
 
 		// reload when player has won
-		if (this.state.current.includes('win') && Date.now() - this.wintime > 3000) {
+		if (App.current.includes('win') && Date.now() - this.wintime > 3000) {
 			this.cancelFrame(this.frame.count - 1);
 			this.load();
 			return;
@@ -406,8 +402,10 @@ class Game {
 	}
 
 	handleKeyboardInput(type, code) {
+		const { App } = reduxStore.getState();
+
 		// ignore when loading
-		if (this.state.current === 'loading') {
+		if (App.current === 'loading') {
 			return;
 		}
 
@@ -415,14 +413,14 @@ class Game {
 
 		if (type === 'keyup') {
 			if (code === 'ShiftRight') {
-				if (this.state.current != 'play' || this.state.paused) { return; }
+				if (App.current != 'play' || this.state.paused) { return; }
 
 				// player 1 scores a point
 				this.playerScore(this.player1);
 			}
 
 			if (code === 'ShiftLeft') {
-				if (this.state.current != 'play' || this.state.paused) { return; }
+				if (App.current != 'play' || this.state.paused) { return; }
 
 				// player 1 scores a point
 				this.playerScore(this.player2);
@@ -431,7 +429,7 @@ class Game {
 			// spacebar start game
 			if (code === 'Space') {
 				// start game when read
-				if (this.state.current === 'ready') {
+				if (App.current === 'ready') {
 					this.setState({ current: 'countdown' });
 					this.countdown(this.countDownLength, this.goText, () => {
 						this.setState({ current: 'play' });
@@ -444,13 +442,13 @@ class Game {
 				}
 
 				// reload when player has won
-				if (this.state.current.includes('win')) {
+				if (App.current.includes('win')) {
 					this.cancelFrame(this.frame.count - 1);
 					this.load();
 				}
 
 				// pause when game state is play
-				if (this.state.current === 'play') {
+				if (App.current === 'play') {
 					this.pause();
 				}
 			}
@@ -458,7 +456,9 @@ class Game {
 	}
 
 	handleTap(touch) {
-		if (this.state.current != 'play' || this.state.paused) { return; }
+		const { App } = reduxStore.getState();
+
+		if (App.current != 'play' || this.state.paused) { return; }
 		let { clientX, clientY } = touch;
 
 		// send tap to players
@@ -484,7 +484,9 @@ class Game {
 	// game helpers
 	// pause game
 	pause() {
-		if (this.state.current != 'play') { return; }
+		const { App } = reduxStore.getState();
+
+		if (App.current != 'play') { return; }
 
 		this.state.paused = !this.state.paused;
 		this.overlay.setPause(this.state.paused);
@@ -581,7 +583,6 @@ class Game {
 	setState(state) {
 		this.state = {
 			...this.state,
-			...{ prev: this.state.current },
 			...state,
 		};
 	}

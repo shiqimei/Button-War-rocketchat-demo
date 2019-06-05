@@ -9,7 +9,8 @@ const initialState = {
 	player1: null,
 	player2: null,
 	settings: settings,
-	current: 'loading'
+	current: 'loading',
+	prev: 'loading'
 };
 
 export default function App(state = initialState, action) {
@@ -28,14 +29,22 @@ export default function App(state = initialState, action) {
 			membersCount: 2,
 			authorized: true
 		};
+	case types.APP.READY:
+		return {
+			...state,
+			prev: state.current,
+			current: gameStatus.READY
+		};
 	case types.APP.START_GAME:
 		return {
 			...state,
+			prev: state.current,
 			current: gameStatus.COUNTDOWN
 		};
 	case types.APP.COUNT_DOWN_COMPLETE:
 		return {
 			...state,
+			prev: state.current,
 			current: gameStatus.PLAY
 		};
 	default:

@@ -12,6 +12,7 @@ function createRequestTypes(base, types = defaultTypes) {
 export const APP = createRequestTypes('APP', [
 	'PLAYER1_JOINED',
 	'PLAYER2_JOINED',
+	'READY',
 	'START_GAME',
 	'COUNT_DOWN_COMPLETE'
 ]);

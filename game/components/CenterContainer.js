@@ -3,14 +3,19 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import StartButton from './Buttons/StartButton';
+import gameStatus from '../constants/gameStatus';
 
 @connect(state => ({
-	settings: state.App.settings
+	settings: state.App.settings,
+	prev: state.App.prev,
+	current: state.App.current
 }))
 
 class CenterContainer extends React.Component {
 	static propTypes = {
-		settings: PropTypes.object
+		settings: PropTypes.object,
+		prev: PropTypes.string,
+		current: PropTypes.string
 	}
 
 	renderInstructions(instructions) {
@@ -26,9 +31,9 @@ class CenterContainer extends React.Component {
 	}
 
 	render() {
-		const { settings } = this.props;
+		const { settings, current } = this.props;
 
-		return (
+		return current === gameStatus.COUNTDOWN ? null : (
 			<StyledCenter>
 				<Banner>{ settings.name }</Banner>
 				<StartButton settings={settings} />
@@ -47,6 +52,7 @@ const StyledCenter = styled.div`
 	padding-top: 25vh;
 	padding-bottom: 25vh;
 	font-size: calc((5vh + 5vw) / 2);
+	z-index: 999;
 `;
 
 const Banner = styled.div`

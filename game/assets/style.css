@@ -33,9 +33,6 @@ canvas {
     height: 100vh;
 }
 
-#react-layer {
-    z-index: 999;
-}
 #gameOverlay {
     z-index: 100;
 }

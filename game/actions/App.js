@@ -14,6 +14,12 @@ export function player2Joined(info) {
 	};
 }
 
+export function ready() {
+	return {
+		type: types.APP.READY
+	};
+}
+
 export function startGame() {
 	return {
 		type: types.APP.START_GAME
