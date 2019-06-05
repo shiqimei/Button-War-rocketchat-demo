@@ -16,13 +16,15 @@ export default function App(state = initialState, action) {
 		return {
 			...state,
 			player1: action.payload,
-			membersCount: 1
+			membersCount: 1,
+			authorized: true
 		};
 	case types.APP.PLAYE2_JOINED:
 		return {
 			...state,
 			player2: action.payload,
-			membersCount: 2
+			membersCount: 2,
+			authorized: true
 		};
 	default:
 		return state;
