@@ -1,5 +1,18 @@
 import * as types from './actionsTypes';
 
+export function initializeStateRequest() {
+	return {
+		type: types.APP.INITIALIZE_STATE_REQUEST
+	};
+}
+
+export function initializeStateSuccess(initialState) {
+	return {
+		type: types.APP.INITIALIZE_STATE_SUCCESS,
+		payload: initialState
+	};
+}
+
 export function authorized(player) {
 	return {
 		type: types.APP.AUTHORIZED,

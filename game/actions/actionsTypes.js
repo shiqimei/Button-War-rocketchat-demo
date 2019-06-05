@@ -10,6 +10,8 @@ function createRequestTypes(base, types = defaultTypes) {
 }
 
 export const APP = createRequestTypes('APP', [
+	'INITIALIZE_STATE_REQUEST',
+	'INITIALIZE_STATE_SUCCESS',
 	'AUTHORIZED',
 	'PLAYER1_JOIN_REQUEST',
 	'PLAYER2_JOIN_REQUEST',
