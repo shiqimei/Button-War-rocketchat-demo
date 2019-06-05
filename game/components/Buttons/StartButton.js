@@ -1,18 +1,29 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import * as AppActions from '../../actions/App';
+
+@connect(state => ({
+	state: state
+}), dispatch => ({
+	startGame: () => dispatch(AppActions.startGame())
+}))
 
 class StartButton extends React.Component {
 	static propTypes = {
-		settings: PropTypes.object.isRequired
+		settings: PropTypes.object.isRequired,
+		startGame: PropTypes.func
 	}
 
 	render() {
-		const { settings } = this.props;
+		const { settings, startGame } = this.props;
 		const { startText } = settings;
 
 		return (
-			<Button>{ startText }</Button>
+			<Button onClick={() => startGame()}>
+				{ startText }
+			</Button>
 		);
 	}
 }

@@ -11,7 +11,9 @@ function createRequestTypes(base, types = defaultTypes) {
 
 export const APP = createRequestTypes('APP', [
 	'PLAYER1_JOINED',
-	'PLAYER2_JOINED'
+	'PLAYER2_JOINED',
+	'START_GAME',
+	'COUNT_DOWN_COMPLETE'
 ]);
 
 export const AUTHPANEL = createRequestTypes('AUTHPANEL', [
