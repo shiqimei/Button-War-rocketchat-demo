@@ -7,7 +7,8 @@ const initialState = {
 	membersCount: 0,
 	player1: null,
 	player2: null,
-	settings: settings
+	settings: settings,
+	current: 'loading'
 };
 
 export default function App(state = initialState, action) {
