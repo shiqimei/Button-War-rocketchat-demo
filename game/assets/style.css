@@ -25,12 +25,19 @@ canvas {
     transition: opacity 1s;
 }
 
-#gameOverlay {
+#react-layer, #gameOverlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
+}
+
+#react-layer {
+    z-index: 999;
+}
+#gameOverlay {
+    z-index: 100;
 }
 
 .container {
@@ -75,7 +82,7 @@ canvas {
     transition: opacity 1s;
 }
 
-.container #button {
+#button {
     visibility: hidden;
     opacity: 0;
     flex: auto;
@@ -94,7 +101,7 @@ canvas {
     transition: opacity 1s, background-color 0.5s;
 }
 
-.container #button:hover {
+#button:hover {
     background-color: rgba(255, 255, 255,0.5);
 }
 
@@ -103,7 +110,7 @@ canvas {
     event is intercepted from bubbling up
     for updated elements. see setButton methods in overlay.js
 */
-.container #buttonspan {
+#buttonspan {
     pointer-events: none;
 }
 

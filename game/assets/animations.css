@@ -41,3 +41,9 @@
 		transform: scale(1);
 	}
 }
+
+@keyframes button {
+    0% { transform: scale(1, 1) }
+    50% { transform: scale(0.98,0.98) }
+    100% { transform: scale(1,1) }
+}
