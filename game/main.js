@@ -20,6 +20,7 @@
  *   Most things to change will be in the play function
  */
 
+import './assets/style.css';
 import './assets/animations.css';
 import './reducers/windowMessage';
 
