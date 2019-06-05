@@ -13,7 +13,8 @@ const initialState = {
 	player2Score: 0,
 	settings: settings,
 	current: 'loading',
-	prev: 'loading'
+	prev: 'loading',
+	loading: false
 };
 
 export default function App(state = initialState, action) {
@@ -45,17 +46,29 @@ export default function App(state = initialState, action) {
 			player: action.payload,
 			authorized: true
 		};
+	case types.APP.PLAYER1_JOIN_REQUEST:
+		return {
+			...state,
+			loading: true
+		};
+	case types.APP.PLAYER2_JOIN_REQUEST:
+		return {
+			...state,
+			loading: true
+		};
 	case types.APP.PLAYER1_JOINED:
 		return {
 			...state,
 			player1: action.payload,
-			membersCount: 1
+			membersCount: 1,
+			loading: false
 		};
 	case types.APP.PLAYER2_JOINED:
 		return {
 			...state,
 			player2: action.payload,
-			membersCount: 2
+			membersCount: 2,
+			loading: false
 		};
 	case types.APP.SCORE_UPDATED:
 		return {
