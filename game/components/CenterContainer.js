@@ -2,7 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+
 import StartButton from './Buttons/StartButton';
+import EllipsisLoading from './Loading/EllipsisLoading';
+
 import gameStatus from '../constants/gameStatus';
 
 @connect(state => ({
@@ -23,6 +26,14 @@ class CenterContainer extends React.Component {
 	renderNotice() {
 		return (
 			<Notice>Waiting for player 2 to join...</Notice>
+		);
+	}
+
+	renderLoading() {
+		return (
+			<Container>
+				<EllipsisLoading />
+			</Container>
 		);
 	}
 
@@ -67,6 +78,10 @@ const StyledCenter = styled.div`
 	padding-bottom: 25vh;
 	font-size: calc((5vh + 5vw) / 2);
 	z-index: 999;
+`;
+
+const Container = styled.p`
+	text-align: center;
 `;
 
 const Notice = styled.p`
