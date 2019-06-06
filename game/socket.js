@@ -13,6 +13,10 @@ socket.on(APP.PLAYER1_JOINED, player1 => {
 	reduxStore.dispatch(AppActions.player1Joined(player1));
 });
 
+socket.on(APP.PLAYER2_JOINED, player2 => {
+	reduxStore.dispatch(AppActions.player2Joined(player2));
+});
+
 socket.on(APP.STATE_UPDATED, App => {
 	reduxStore.dispatch(AppActions.stateUpdated(App));
 });

@@ -46,6 +46,12 @@ io.on('connection', (socket) => {
 		currentState.membersCount = 1;
 		io.emit(Actions.PLAYER1_JOINED, player);
 	});
+
+	socket.on(Actions.PLAYER2_JOIN_REQUEST, player => {
+		currentState.player2 = player;
+		currentState.membersCount = 2;
+		io.emit(Actions.PLAYER2_JOINED, player);
+	});
 });
 
 server.listen(PORT, () => {

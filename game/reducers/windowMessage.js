@@ -1,7 +1,8 @@
 import reduxStore from '../createStore';
 import {
 	authorized as playerAuthorizedAction,
-	player1JoinRequest as player1JoinRequestAction
+	player1JoinRequest as player1JoinRequestAction,
+	player2JoinRequest as player2JoinRequestAction
 } from '../actions/App';
 
 window.addEventListener('message', ({ data }) => {
@@ -15,10 +16,15 @@ window.addEventListener('message', ({ data }) => {
 			reduxStore.dispatch(playerAuthorizedAction(connected));
 
 			const { App } = reduxStore.getState();
-			const { player, player1 } = App;
+			const { player, player1, player2 } = App;
 
 			if (!player1) {
 				reduxStore.dispatch(player1JoinRequestAction(player));
+				return;
+			}
+
+			if (!player2) {
+				reduxStore.dispatch(player2JoinRequestAction(player));
 				return;
 			}
 		}
