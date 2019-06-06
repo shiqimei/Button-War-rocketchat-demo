@@ -14,7 +14,9 @@ import gameStatus from '../constants/gameStatus';
 	current: state.App.current,
 	authorized: state.App.authorized,
 	loading: state.App.loading,
-	player1: state.App.player1
+	player1: state.App.player1,
+	player2: state.App.player2,
+	owner: state.App.owner
 }))
 
 class CenterContainer extends React.Component {
@@ -24,12 +26,20 @@ class CenterContainer extends React.Component {
 		current: PropTypes.string,
 		authorized: PropTypes.bool,
 		player1: PropTypes.object,
+		player2: PropTypes.object,
+		owner: PropTypes.bool,
 		loading: PropTypes.bool
 	}
 
 	renderNotice() {
+		const { player1, player2, owner } = this.props;
+		let text = 'Waiting for player 2 to join...';
+
+		if (player1 && player2 && !owner) {
+			text = 'Waiting for player 1 to start...';
+		}
 		return (
-			<Notice>Waiting for player 2 to join...</Notice>
+			<Notice>{ text }</Notice>
 		);
 	}
 
@@ -43,12 +53,20 @@ class CenterContainer extends React.Component {
 
 	renderStartButton() {
 		const {
-			authorized, player1, settings
+			authorized, player1, player2, owner, settings
 		} = this.props;
+		let text = null;
+		
+		if (!authorized && player1) {
+			text = 'Login to Join';
+		}
+		if (player1 && player2 && owner) {
+			text = 'Start Game';
+		}
 
 		return (
 			<StartButton settings={settings} text={
-				(!authorized && player1 ) ? 'Login to Join' : null
+				text ? text : null
 			} />
 		);
 	}
@@ -67,15 +85,15 @@ class CenterContainer extends React.Component {
 
 	render() {
 		const {
-			settings, current, authorized, player1, loading
+			settings, current, authorized, player1, player2, owner, loading
 		} = this.props;
 
 		return current === gameStatus.COUNTDOWN ? null : (
 			<StyledCenter>
 				<Banner>{ settings.name }</Banner>
-				{ !authorized ? this.renderStartButton() : null }
+				{ (!authorized || player1 && player2 && owner) ? this.renderStartButton() : null }
 				{ loading ? this.renderLoading() : null }
-				{ (player1 && authorized) ? this.renderNotice() : null }
+				{ (player1 && !player2 && authorized || player1 && player2 && !owner) ? this.renderNotice() : null }
 				{ this.renderInstructions(settings.instructions) }
 			</StyledCenter>
 		);
