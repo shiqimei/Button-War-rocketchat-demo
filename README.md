@@ -4,6 +4,8 @@ A competitive button mashing game, which is the exploration that integrates the 
 
 ![](./docs/images/preview.gif)
 
+![](./docs/images/preview2.gif)
+
 ## Features
 | Name | Status |
 | :-: | :-: |
