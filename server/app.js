@@ -36,8 +36,9 @@ io.on('connection', (socket) => {
 		console.log(socket.id, ' disconnected');
 	});
 
-	if (currentState.player1) {
-		io.emit(Actions.)
+	// waiting for player2 to join
+	if (currentState.player1 && !currentState.player2) {
+		io.emit(Actions.STATE_UPDATED, currentState);
 	}
 
 	socket.on(Actions.PLAYER1_JOIN_REQUEST, player => {

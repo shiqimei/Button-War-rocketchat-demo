@@ -12,3 +12,7 @@ console.dir(socket);
 socket.on(APP.PLAYER1_JOINED, player1 => {
 	reduxStore.dispatch(AppActions.player1Joined(player1));
 });
+
+socket.on(APP.STATE_UPDATED, App => {
+	reduxStore.dispatch(AppActions.stateUpdated(App));
+});
