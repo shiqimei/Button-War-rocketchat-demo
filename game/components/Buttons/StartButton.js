@@ -19,7 +19,8 @@ class StartButton extends React.Component {
 		settings: PropTypes.object.isRequired,
 		startGame: PropTypes.func,
 		showPanel: PropTypes.func,
-		authorized: PropTypes.bool
+		authorized: PropTypes.bool,
+		text: PropTypes.string
 	}
 
 	_onStartGameClick() {
@@ -34,12 +35,12 @@ class StartButton extends React.Component {
 	}
 
 	render() {
-		const { settings } = this.props;
+		const { settings, text } = this.props;
 		const { startText } = settings;
 
 		return (
 			<Button onClick={() => this._onStartGameClick()}>
-				{ startText }
+				{ text ? text : startText }
 			</Button>
 		);
 	}
