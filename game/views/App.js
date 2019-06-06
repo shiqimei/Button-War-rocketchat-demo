@@ -7,25 +7,28 @@ import AuthPanel from '../components/AuthPanel';
 import InfoBox from '../components/InfoBox';
 import CenterContainer from '../components/CenterContainer';
 
+import position from '../constants/position';
+
 @connect(state => ({
 	player1: state.App.player1,
-	player: state.App.player
+	player2: state.App.player2
 }))
 
 class App extends React.Component {
 	static propTypes = {
-		player: PropTypes.object,
-		player1: PropTypes.object
+		player1: PropTypes.object,
+		player2: PropTypes.object
 	}
 
 	render() {
-		const { player, player1 } = this.props;
+		const { player1, player2 } = this.props;
 
 		return (
 			<React.Fragment>
 				<AuthPanel />
 				<CenterContainer />
-				<InfoBox player={player1} />
+				<InfoBox position={position.BOTTOMLEFT} player={player1} />
+				<InfoBox position={position.BOTTOMRIGHT} player={player2} />
 			</React.Fragment>	
 		);
 	}

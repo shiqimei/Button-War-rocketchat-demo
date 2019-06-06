@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import Position from '../constants/position';
 
 class InfoBox extends React.Component {
 	static propTypes = {
-		player: PropTypes.object
+		player: PropTypes.object,
+		position: PropTypes.string.isRequired
 	}
 
 	componentDidUpdate() {
@@ -18,6 +20,21 @@ class InfoBox extends React.Component {
 		);
 	}
 
+	renderStyle = () => {
+		const { position } = this.props;
+		if (position === Position.BOTTOMRIGHT) {
+			return {
+				...mainStyle,
+				right: 25
+			};
+		} else {
+			return {
+				...mainStyle,
+				left: 25
+			};
+		}
+	}
+
 	render() {
 		const { player } = this.props;
 		const className = classNames({
@@ -25,7 +42,7 @@ class InfoBox extends React.Component {
 		});
 
 		return player ? (
-			<div style={mainStyle} className={className}>
+			<div style={this.renderStyle()} className={className}>
 				{ this.renderAvatar(player) }
 				<p style={pStyle}>{player.username}</p>
 			</div>
@@ -35,8 +52,7 @@ class InfoBox extends React.Component {
 
 const mainStyle = {
 	position: 'absolute',
-	bottom: 40,
-	left: 25
+	bottom: 40
 };
 
 const imgStyle = {
