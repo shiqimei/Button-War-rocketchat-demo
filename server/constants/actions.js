@@ -5,8 +5,7 @@ function createActionTypes(base, types) {
 }
 
 const APP = [
-	'INITIALIZE_STATE_REQUEST',
-	'INITIALIZE_STATE_SUCCESS',
+	'STATE_UPDATED',
 	'PLAYER1_JOIN_REQUEST',
 	'PLAYER2_JOIN_REQUEST',
 	'PLAYER1_JOINED',

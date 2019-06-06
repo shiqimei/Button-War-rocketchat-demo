@@ -1,15 +1,9 @@
 import * as types from './actionsTypes';
 
-export function initializeStateRequest() {
+export function stateUpdated(App) {
 	return {
-		type: types.APP.INITIALIZE_STATE_REQUEST
-	};
-}
-
-export function initializeStateSuccess(initialState) {
-	return {
-		type: types.APP.INITIALIZE_STATE_SUCCESS,
-		payload: initialState
+		type: types.APP.STATE_UPDATED,
+		payload: App
 	};
 }
 

@@ -19,27 +19,11 @@ const initialState = {
 
 export default function App(state = initialState, action) {
 	switch (action.type) {
-	case types.APP.INITIALIZE_STATE_SUCCESS:
-		switch (action.payload.membersCount) {
-		case 1:
-			return {
-				...state,
-				player1: action.payload.player1,
-				membersCount: 1	
-			};
-		case 2:
-			return {
-				...state,
-				player1: action.payload.player1,
-				player2: action.payload.player2,
-				membersCount: 2
-			};
-		default:
-			return {
-				...state,
-				membersCount: 0
-			};
-		}
+	case types.APP.STATE_UPDATED:
+		return {
+			...state,
+			...action.payload
+		};
 	case types.APP.AUTHORIZED:
 		return {
 			...state,

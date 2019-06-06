@@ -14,6 +14,8 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+const currentState = {};
+
 // database
 mongoose.connect('mongodb://localhost:27017/local');
 const db = mongoose.connection;
@@ -34,8 +36,13 @@ io.on('connection', (socket) => {
 		console.log(socket.id, ' disconnected');
 	});
 
+	if (currentState.player1) {
+		io.emit(Actions.)
+	}
+
 	socket.on(Actions.PLAYER1_JOIN_REQUEST, player => {
-		console.log(Actions.PLAYER1_JOINED);
+		currentState.player1 = player;
+		currentState.membersCount = 1;
 		io.emit(Actions.PLAYER1_JOINED, player);
 	});
 });
