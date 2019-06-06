@@ -14,7 +14,8 @@ const initialState = {
 	settings: settings,
 	current: 'loading',
 	prev: 'loading',
-	loading: false
+	loading: false,
+	owner: false
 };
 
 export default function App(state = initialState, action) {
@@ -45,7 +46,8 @@ export default function App(state = initialState, action) {
 			...state,
 			player1: action.payload,
 			membersCount: 1,
-			loading: false
+			loading: false,
+			owner: true
 		};
 	case types.APP.PLAYER2_JOINED:
 		return {
