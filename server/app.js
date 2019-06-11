@@ -15,8 +15,8 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/', (req, res) => {
-	console.log(req.query)
+app.get('/', (req) => {
+	console.log(req.query);
 });
 
 const currentState = {};

@@ -9,9 +9,12 @@ import './views/ReactLayer';
 import reduxStore from './createStore';
 import * as AppActions from './actions/App';
 import * as types from './actions/actionsTypes';
+import {
+	init as initRoomAction
+} from './actions/room';
 
 import Settings from './constants/settings';
-import axios from 'axios';
+import queryString from 'query-string';
 
 import {
 	requestAnimationFrame,
@@ -94,9 +97,12 @@ class Game {
 
 	init() {
 		// forward query strings
-		const queryString = window.location.href.replace(/^http.+\?/,'');
-		axios.get(`${ Settings.SERVER_URL }/?${queryString}`);
-		
+		const query = window.location.search;
+		if (query) {
+			const { rid } = queryString.parse(query);
+			reduxStore.dispatch(initRoomAction(rid));
+		}
+
 		// subscribe
 		reduxStore.subscribe(() => {
 			const { lastAction } = reduxStore.getState();

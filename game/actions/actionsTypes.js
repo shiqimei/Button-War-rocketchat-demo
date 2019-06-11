@@ -29,3 +29,8 @@ export const AUTHPANEL = createRequestTypes('AUTHPANEL', [
 	'SHOW_PANEL',
 	'HIDE_PANEL'
 ]);
+
+export const ROOM = createRequestTypes('ROOM', [
+	...defaultTypes,
+	'INIT'
+]);
