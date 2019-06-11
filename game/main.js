@@ -378,10 +378,7 @@ class Game {
 		console.log(target.id);
 		if ( target.id === 'button') {
 			const { App } = reduxStore.getState();
-
-			if (!App.authorized) {
-				reduxStore.dispatch(showPanel());
-			}
+			
 
 			if (App.membersCount) {
 				this.setState({ current: 'countdown' });
