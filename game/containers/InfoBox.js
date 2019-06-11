@@ -11,7 +11,6 @@ class InfoBox extends React.Component {
 
 	componentDidUpdate() {
 		const { player } = this.props;
-		console.log(player);
 	}
 
 	renderAvatar(player) {
