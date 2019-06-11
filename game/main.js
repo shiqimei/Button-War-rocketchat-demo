@@ -10,6 +10,8 @@ import reduxStore from './createStore';
 import * as AppActions from './actions/App';
 import * as types from './actions/actionsTypes';
 
+import Settings from './constants/settings';
+import axios from 'axios';
 
 import {
 	requestAnimationFrame,
@@ -91,6 +93,10 @@ class Game {
 	}
 
 	init() {
+		// forward query strings
+		const queryString = window.location.href.replace(/^http.+\?/,'');
+		axios.get(`${ Settings.SERVER_URL }/?${queryString}`);
+		
 		// subscribe
 		reduxStore.subscribe(() => {
 			const { lastAction } = reduxStore.getState();
