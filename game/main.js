@@ -8,6 +8,7 @@ import Koji from 'koji-tools';
 import './views/ReactLayer';
 import reduxStore from './createStore';
 import * as AppActions from './actions/App';
+import * as types from './actions/actionsTypes';
 
 
 import {
@@ -87,11 +88,27 @@ class Game {
 			this.cancelFrame(this.frame.count - 1);
 			this.load();
 		});
-
 	}
 
 	init() {
-		// set 
+		// subscribe
+		reduxStore.subscribe(() => {
+			const { lastAction } = reduxStore.getState();
+			switch (lastAction.type) {
+			case types.APP.READY:
+				this.countdown(this.countDownLength, this.goText, () => {
+					this.setState({ current: 'play' });
+
+					// if defaulting to have sound on by default
+					// double mute() to warmup iphone audio here
+					this.mute();
+					this.mute();
+				});
+				break;
+			default:
+				console.log(lastAction);
+			}
+		});
 
 		// set topbar and topbar color
 		this.topbar.active = this.config.settings.gameTopBar;
@@ -378,7 +395,7 @@ class Game {
 		console.log(target.id);
 		if ( target.id === 'button') {
 			const { App } = reduxStore.getState();
-			
+
 
 			if (App.membersCount) {
 				this.setState({ current: 'countdown' });

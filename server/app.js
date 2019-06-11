@@ -8,6 +8,7 @@ const http = require('http');
 const server = http.createServer(app);
 const io = require('socket.io')(server);
 const Actions = require('./constants/actions');
+const chalk = require('chalk');
 
 app.use(morgan('dev'));
 
@@ -30,10 +31,9 @@ db.on('open', () => {
 
 // socket.io
 io.on('connection', (socket) => {
-	console.log(socket.id, ' connected');
 
 	socket.on('disconnect', () => {
-		console.log(socket.id, ' disconnected');
+		console.log(`${chalk.gray(socket.id)} ${chalk.red('leaved')}`);
 	});
 
 	// waiting for player2 to join
@@ -44,6 +44,10 @@ io.on('connection', (socket) => {
 	socket.on(Actions.PLAYER1_JOIN_REQUEST, player => {
 		currentState.player1 = player;
 		currentState.membersCount = 1;
+
+		console.log(`${chalk.gray(socket.id)} ${player.username} ${chalk.green('connected')}
+		`);
+
 		io.emit(Actions.PLAYER1_JOINED, player);
 	});
 
