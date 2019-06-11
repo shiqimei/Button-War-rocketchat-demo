@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
 
-import AuthPanel from '../components/AuthPanel';
-import InfoBox from '../components/InfoBox';
-import CenterContainer from '../components/CenterContainer';
+import AuthPanel from '../containers/AuthPanel';
+import InfoBox from '../containers/InfoBox';
+import CenterContainer from '../containers/CenterContainer';
 
 import position from '../constants/position';
 

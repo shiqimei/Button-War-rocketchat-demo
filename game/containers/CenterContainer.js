@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import StartButton from './Buttons/StartButton';
-import EllipsisLoading from './Loading/EllipsisLoading';
+import StartButton from '../components/Buttons/StartButton';
+import EllipsisLoading from '../components/Loading/EllipsisLoading';
 
 import gameStatus from '../constants/gameStatus';
 

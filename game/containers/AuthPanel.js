@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import AllowButton from './Buttons/AllowButton';
-import CancelButton from './Buttons/CancelButton';
+import AllowButton from '../components/Buttons/AllowButton';
+import CancelButton from '../components/Buttons/CancelButton';
 import RocketChat from '../lib/rocketchat-koji';
 
 import { connect } from 'react-redux';
