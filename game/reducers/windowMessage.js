@@ -1,4 +1,4 @@
-import reduxStore from '../createStore';
+import reduxStore from '../lib/createStore';
 import {
 	authorized as playerAuthorizedAction,
 	player1JoinRequest as player1JoinRequestAction,

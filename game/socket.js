@@ -1,7 +1,7 @@
 import io from 'socket.io-client';
 import { APP } from './actions/actionsTypes';
 import * as AppActions from './actions/App';
-import reduxStore from './createStore';
+import reduxStore from './lib/createStore';
 import settings from './constants/settings';
 
 const { SERVER_URL } = settings;

@@ -6,7 +6,7 @@ import './reducers/windowMessage';
 import './socket';
 import Koji from 'koji-tools';
 import './views/ReactLayer';
-import reduxStore from './createStore';
+import reduxStore from './lib/createStore';
 import * as AppActions from './actions/App';
 import * as types from './actions/actionsTypes';
 import {
