@@ -68,8 +68,8 @@ class AuthPanel extends React.Component {
 const mainStyle = {
 	position: 'absolute',
 	top: '25%',
-	left: '15%',
-	right: '15%',
+	left: '10%',
+	right: '10%',
 	background: 'white',
 	zIndex: '1000',
 	padding: 10,
