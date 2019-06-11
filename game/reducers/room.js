@@ -4,7 +4,10 @@ const initialState = {
 	rid: null,
 	owner: null,
 	player1: null,
-	player2: null
+	player1Score: 0,
+	player2: null,
+	player2Score: 0,
+	count: 0
 };
 
 export default function room(state = initialState, action) {

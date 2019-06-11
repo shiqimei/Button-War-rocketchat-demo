@@ -7,38 +7,10 @@ export function stateUpdated(App) {
 	};
 }
 
-export function authorized(player) {
+export function authorized(user) {
 	return {
 		type: types.APP.AUTHORIZED,
-		payload: player
-	};
-}
-
-export function player1JoinRequest(player1) {
-	return {
-		type: types.APP.PLAYER1_JOIN_REQUEST,
-		payload: player1
-	};
-}
-
-export function player2JoinRequest(player2) {
-	return {
-		type: types.APP.PLAYER2_JOIN_REQUEST,
-		payload: player2
-	};
-}
-
-export function player1Joined(player1) {
-	return {
-		type: types.APP.PLAYER1_JOINED,
-		payload: player1
-	};
-}
-
-export function player2Joined(player2) {
-	return {
-		type: types.APP.PLAYER2_JOINED,
-		payload: player2
+		user
 	};
 }
 

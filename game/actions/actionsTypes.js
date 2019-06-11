@@ -12,10 +12,6 @@ function createRequestTypes(base, types = defaultTypes) {
 export const APP = createRequestTypes('APP', [
 	'STATE_UPDATED',
 	'AUTHORIZED',
-	'PLAYER1_JOIN_REQUEST',
-	'PLAYER2_JOIN_REQUEST',
-	'PLAYER1_JOINED',
-	'PLAYER2_JOINED',
 	'PLAYER1_SCORE_REQUEST',
 	'PLAYER2_SCORE_REQUEST',
 	'SCORE_UPDATED',
@@ -32,5 +28,12 @@ export const AUTHPANEL = createRequestTypes('AUTHPANEL', [
 
 export const ROOM = createRequestTypes('ROOM', [
 	...defaultTypes,
-	'INIT'
+	'INIT',
+	'CREATE_ROOM_REQUEST',
+	'CREATE_ROOM_SUCCESS',
+	'CREATE_ROOM_FAILED',
+	'JOIN_ROOM_REQUEST',
+	'JOIN_ROOM_SUCCESS',
+	'JOIN_ROOM_FAILED',
+	'PLAYER_LEAVED_ROOM'
 ]);
