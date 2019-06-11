@@ -2,7 +2,7 @@
     "settings": {
       "name": "Button War",
       "startText": "Login to Start",
-      "instructions": "Tap the buttons to win! \n Player 1: Press Right Shift \n Player 2: Press Left Shift",
+      "instructions": "Tap the buttons to win! \n Player 1: Tap the blue button \n Player 2: Tap the red button",
       "goText": "Go!",
       "playerOneName": "Player 1",
       "playerTwoName": "Player 2",

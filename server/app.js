@@ -43,6 +43,7 @@ io.on('connection', (socket) => {
 	// waiting for player2 to join
 	if (currentState.player1 && !currentState.player2) {
 		io.emit(Actions.STATE_UPDATED, currentState);
+		console.log(JSON.stringify(currentState. null, 4));
 	}
 
 	socket.on(Actions.PLAYER1_JOIN_REQUEST, player => {
