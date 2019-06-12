@@ -52,10 +52,16 @@ class CenterContainer extends React.Component {
 	}
 
 	renderStartButton() {
-		const { settings } = this.props;
+		const { owner, player1, player2, settings } = this.props;
+
+		let text = null;
+
+		if (!owner && player1 && !player2) {
+			text = 'Login to Join';
+		}
 
 		return (
-			<StartButton settings={settings} />
+			<StartButton settings={settings} text={text} />
 		);
 	}
 
@@ -79,7 +85,7 @@ class CenterContainer extends React.Component {
 		return current === gameStatus.COUNTDOWN ? null : (
 			<StyledCenter>
 				<Banner>{ settings.name }</Banner>
-				{ !authorized ? this.renderStartButton() : null }
+				{ (!authorized) || (authorized && owner && player2) ? this.renderStartButton() : null }
 				{ loading ? this.renderLoading() : null }
 				{ player1 && player2 && !owner ? this.renderNotice() : null }
 				{ this.renderInstructions(settings.instructions) }
