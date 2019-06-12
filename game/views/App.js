@@ -6,22 +6,31 @@ import { connect } from 'react-redux';
 import AuthPanel from '../containers/AuthPanel';
 import InfoBox from '../containers/InfoBox';
 import CenterContainer from '../containers/CenterContainer';
+import Blocker from '../containers/Blocker';
 
 import position from '../constants/position';
 
 @connect(state => ({
 	player1: state.App.player1,
-	player2: state.App.player2
+	player2: state.App.player2,
+	rid: state.room.rid
 }))
 
 class App extends React.Component {
 	static propTypes = {
 		player1: PropTypes.object,
-		player2: PropTypes.object
+		player2: PropTypes.object,
+		rid: PropTypes.string
+	}
+
+	renderBlocker() {
+		return (
+			<Blocker/>
+		);
 	}
 
 	render() {
-		const { player1, player2 } = this.props;
+		const { player1, player2, rid } = this.props;
 
 		return (
 			<React.Fragment>
@@ -29,6 +38,7 @@ class App extends React.Component {
 				<CenterContainer />
 				<InfoBox position={position.BOTTOMLEFT} player={player1} />
 				<InfoBox position={position.BOTTOMRIGHT} player={player2} />
+				{ rid ? null : this.renderBlocker() }
 			</React.Fragment>	
 		);
 	}
