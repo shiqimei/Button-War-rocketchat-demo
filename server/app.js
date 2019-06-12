@@ -62,6 +62,18 @@ io.on('connection', (socket) => {
 		}
 	});
 
+	socket.on(Actions.ROOM.INIT, async rid => {
+		const result = await model.find({ rid: rid });
+		if (!result.length) {
+			const err = {
+				message: 'Invalid Room!'
+			};
+			io.emit(Actions.ROOM.INIT_FAILED, err);
+		} else {
+			io.emit(Actions.ROOM.INIT_SUCCESS);
+		}
+	});
+
 	socket.on(Actions.ROOM.JOIN_ROOM_REQUEST, async (rid, user) => {
 		const room = await model.findOne({ rid: rid });
 		if (room) {

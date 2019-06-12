@@ -4,6 +4,7 @@ import {
 } from './actions/actionsTypes';
 import * as AppActions from './actions/App';
 import {
+	initSuccess, initFailed,
 	createRoomSuccess, joinRoomSuccess
 } from './actions/room';
 import reduxStore from './lib/createStore';
@@ -12,16 +13,22 @@ import settings from './constants/settings';
 const { SERVER_URL } = settings;
 const socket = io.connect(SERVER_URL);
 
+socket.on(ROOM.INIT_SUCCESS, () => {
+	reduxStore.dispatch(initSuccess());
+});
+
+socket.on(ROOM.INIT_FAILED, err => {
+	reduxStore.dispatch(initFailed(err));
+});
+
 socket.on(APP.STATE_UPDATED, App => {
 	reduxStore.dispatch(AppActions.stateUpdated(App));
 });
 
 socket.on(ROOM.CREATE_ROOM_SUCCESS, room => {
-	console.warn(room);
 	reduxStore.dispatch(createRoomSuccess(room));
 });
 
 socket.on(ROOM.JOIN_ROOM_SUCCESS, room => {
-	console.log('joinRoomSuccess', JSON.stringify(room, null, 4))
 	reduxStore.dispatch(joinRoomSuccess(room));
 });

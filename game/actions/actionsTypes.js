@@ -29,6 +29,8 @@ export const AUTHPANEL = createRequestTypes('AUTHPANEL', [
 export const ROOM = createRequestTypes('ROOM', [
 	...defaultTypes,
 	'INIT',
+	'INIT_SUCCESS',
+	'INIT_FAILED',
 	'CREATE_ROOM_REQUEST',
 	'CREATE_ROOM_SUCCESS',
 	'CREATE_ROOM_FAILED',

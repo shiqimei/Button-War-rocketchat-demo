@@ -7,6 +7,19 @@ export function init(rid) {
 	};
 }
 
+export function initSuccess() {
+	return {
+		type: types.ROOM.INIT_SUCCESS
+	};
+}
+
+export function initFailed(err) {
+	return {
+		type: types.ROOM.INIT_FAILED,
+		err
+	};
+}
+
 export function createRoomRequest() {
 	return {
 		type: types.ROOM.CREATE_ROOM_REQUEST

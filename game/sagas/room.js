@@ -13,6 +13,13 @@ import reduxStore from '../lib/createStore';
 const { SERVER_URL } = Settings;
 const socket = io.connect(SERVER_URL);
 
+const handleInit = function* handleInit({ rid }) {
+	try {
+		yield socket.emit(ROOM.INIT, rid);
+	} catch (err) {
+		console.warn(err);
+	}
+};
 
 const handleCreateRoomequest = function* handleCreateRoomequest({ user }) {
 	try {
