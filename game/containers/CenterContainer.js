@@ -16,6 +16,7 @@ import gameStatus from '../constants/gameStatus';
 	loading: state.App.loading,
 	player1: state.room.player1,
 	player2: state.room.player2,
+	owner: state.room.owner
 }))
 
 class CenterContainer extends React.Component {
@@ -26,7 +27,8 @@ class CenterContainer extends React.Component {
 		authorized: PropTypes.bool,
 		player1: PropTypes.object,
 		player2: PropTypes.object,
-		loading: PropTypes.bool
+		loading: PropTypes.bool,
+		owner: PropTypes.owner
 	}
 
 	renderNotice() {
@@ -49,7 +51,7 @@ class CenterContainer extends React.Component {
 		);
 	}
 
-	renderLoginToStartButton() {
+	renderStartButton() {
 		const { settings } = this.props;
 
 		return (
@@ -71,15 +73,15 @@ class CenterContainer extends React.Component {
 
 	render() {
 		const {
-			settings, current, authorized, player1, player2, loading
+			settings, current, authorized, player1, player2, loading, owner
 		} = this.props;
 
 		return current === gameStatus.COUNTDOWN ? null : (
 			<StyledCenter>
 				<Banner>{ settings.name }</Banner>
-				{ !authorized ? this.renderLoginToStartButton() : null }
+				{ !authorized ? this.renderStartButton() : null }
 				{ loading ? this.renderLoading() : null }
-				{ (player1 && !player2 && authorized || player1 && player2) ? this.renderNotice() : null }
+				{ player1 && player2 && !owner ? this.renderNotice() : null }
 				{ this.renderInstructions(settings.instructions) }
 			</StyledCenter>
 		);

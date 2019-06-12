@@ -44,10 +44,19 @@ io.on('connection', (socket) => {
 
 		if (player1LeavedRoom) {
 			const { rid, player1: { username } } = player1LeavedRoom;
-			const result = await model.deleteOne({ rid: rid });
-			if (result.ok) {
+			if (player1LeavedRoom.player2) {
+				player1LeavedRoom.player1 = player1LeavedRoom.player2;
+				player1LeavedRoom.player2 = undefined;
+				await player1LeavedRoom.save();
+				const room = await model.findOne({ rid: rid }, { _id: 0, __v: 0, 'player1.socketId': 0, 'player2.socketId': 0 });
 				console.log(`${chalk.green('[INFO]')} player1 ${username} leaved room ${chalk.red(rid)}`);
-				io.emit(Actions.ROOM.PLAYER2_LEAVED_ROOM);
+				io.emit(Actions.ROOM.PLAYER2_LEAVED_ROOM, room);
+			} else {
+				const result = await model.deleteOne({ rid: rid });
+				if (result.ok) {
+					console.log(`${chalk.green('[INFO]')} player1 ${username} leaved room ${chalk.red(rid)}`);
+					io.emit(Actions.ROOM.PLAYER2_LEAVED_ROOM);
+				}
 			}
 		}
 

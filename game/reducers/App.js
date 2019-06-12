@@ -9,6 +9,7 @@ const initialState = {
 	current: 'loading',
 	prev: 'loading',
 	loading: false,
+	authorized: false
 };
 
 export default function App(state = initialState, action) {
@@ -21,7 +22,7 @@ export default function App(state = initialState, action) {
 	case types.APP.AUTHORIZED:
 		return {
 			...state,
-			user: action.user
+			authorized: true
 		};
 	case types.APP.READY:
 		return {
