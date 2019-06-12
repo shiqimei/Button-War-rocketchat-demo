@@ -1,8 +1,7 @@
 import * as types from '../actions/actionsTypes';
 
 const initialState = {
-	rid: null,
-	owner: null,
+	rid: '',
 	player1: null,
 	player1Score: 0,
 	player2: null,
@@ -16,6 +15,11 @@ export default function room(state = initialState, action) {
 		return {
 			...state,
 			rid: action.rid
+		};
+	case types.CREATE_ROOM_SUCCESS:
+		return {
+			...state,
+			...action.room
 		};
 	default:
 		return state;

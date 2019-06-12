@@ -14,10 +14,10 @@ export function createRoomRequest(user) {
 	};
 }
 
-export function createRoomSuccess(rid) {
+export function createRoomSuccess(room) {
 	return {
 		type: types.ROOM.CREATE_ROOM_SUCCESS,
-		rid
+		room
 	};
 }
 
@@ -28,11 +28,11 @@ export function createRoomFailed(err) {
 	};
 }
 
-export function joinRoomRequest(rid, player) {
+export function joinRoomRequest(rid, user) {
 	return {
 		type: types.ROOM.JOIN_ROOM_REQUEST,
 		rid,
-		player
+		user
 	};
 }
 

@@ -52,37 +52,59 @@ io.on('connection', (socket) => {
 
 		const player2LeavedRoom = await model.findOne({
 			'player2.socketId': socket.id
-		}, { _id: 0, __v: 0 });
+		});
 
 		if (player2LeavedRoom) {
 			const { rid, player2: { username } } = player2LeavedRoom;
-			const result = await model.deleteOne({ rid: rid });
-			if (result.ok) {
-				console.log(`${chalk.green('[INFO]')} player2 ${username} leaved room ${chalk.red(rid)}`);
-			}
+			player2LeavedRoom.player2 = undefined;
+			await player2LeavedRoom.save();
+			console.log(`${chalk.green('[INFO]')} player2 ${username} leaved room ${chalk.red(rid)}`);
+		}
+	});
+
+	socket.on(Actions.ROOM.JOIN_ROOM_REQUEST, async (rid, user) => {
+		const room = await model.findOne({ rid: rid });
+		if (room) {
+			room.player2 = {
+				...user,
+				socketId: socket.id
+			};
+			await room.save();
+			const newRoom = await model.findOne({ rid: rid }, { _id: 0, __v: 0 });
+			io.emit(Actions.ROOM.JOIN_ROOM_SUCCESS, newRoom);
+			console.log(`${chalk.green('[INFO]')} player2 ${user.username} joined room ${chalk.yellow(rid)}`);
+		} else {
+			handleCreateRoomRequest(socket, user, rid);
 		}
 	});
 
 	socket.on(Actions.ROOM.CREATE_ROOM_REQUEST, async user => {
-		const room = {
-			rid: socket.id,
-			player1: {
-				...user,
-				socketId: socket.id
-			}
-		};
-		const roomItem = new model(room);
-		roomItem.save((err) => {
-			if (err) {
-				console.warn(err);
-				io.emit(Actions.ROOM.CREATE_ROOM_FAILED, err);
-			} else {
-				console.log(`${chalk.green('[INFO]')} ${user.username} created room ${chalk.yellow(socket.id)}`);
-				io.emit(Actions.ROOM.CREATE_ROOM_SUCCESS, socket.id);
-			}
-		});
+		handleCreateRoomRequest(socket, user);
 	});
 });
+
+async function handleCreateRoomRequest(socket, user, rid = null) {
+	rid = rid ? rid : socket.id;
+	const room = {
+		rid,
+		player1: {
+			...user,
+			socketId: socket.id
+		}
+	};
+	const roomItem = new model(room);
+	roomItem.save( async (err) => {
+		if (err) {
+			console.warn(err);
+			io.emit(Actions.ROOM.CREATE_ROOM_FAILED, err);
+		} else {
+			console.log(`${chalk.green('[INFO]')} ${user.username} created room ${chalk.yellow(rid)}`);
+			const result = await model.findOne({ rid: rid }, { _id: 0, __v: 0, 'player1.socketId': 0, 'player2.socketId': 0 });
+			io.emit(Actions.ROOM.CREATE_ROOM_SUCCESS, result);
+			console.log(result);
+		}
+	});
+}
 
 server.listen(PORT, () => {
 	console.log('Server is live on PORT:', PORT);

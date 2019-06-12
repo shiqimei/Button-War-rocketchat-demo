@@ -4,7 +4,8 @@ import {
 } from '../actions/App';
 
 import {
-	createRoomRequest
+	createRoomRequest,
+	joinRoomRequest
 } from '../actions/room';
 
 window.addEventListener('message', ({ data }) => {
@@ -17,10 +18,13 @@ window.addEventListener('message', ({ data }) => {
 			const user = data.rcEmbeddedSdk.connected;
 			reduxStore.dispatch(playerAuthorizedAction(user));
 
-			const { App } = reduxStore.getState();
-			const { player, player1, player2 } = App;
+			const { App, room: { rid } } = reduxStore.getState();
+			const { player1, player2 } = App;
 
-			if (!player1) {
+			if (rid) {
+				reduxStore.dispatch(joinRoomRequest(rid, user));
+				return;
+			} else {
 				reduxStore.dispatch(createRoomRequest(user));
 				return;
 			}

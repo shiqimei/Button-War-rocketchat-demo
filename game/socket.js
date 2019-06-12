@@ -4,7 +4,7 @@ import {
 } from './actions/actionsTypes';
 import * as AppActions from './actions/App';
 import {
-	createRoomRequest, createRoomSuccess
+	createRoomRequest, createRoomSuccess, joinRoomSuccess
 } from './actions/room';
 import reduxStore from './lib/createStore';
 import settings from './constants/settings';
@@ -18,4 +18,9 @@ socket.on(APP.STATE_UPDATED, App => {
 
 socket.on(ROOM.CREATE_ROOM_SUCCESS, room => {
 	reduxStore.dispatch(createRoomSuccess(room));
+});
+
+socket.on(ROOM.JOIN_ROOM_SUCCESS, room => {
+	console.log('joinRoomSuccess', JSON.stringify(room, null, 4))
+	reduxStore.dispatch(joinRoomSuccess(room));
 });
