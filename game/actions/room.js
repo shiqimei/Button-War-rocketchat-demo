@@ -7,10 +7,9 @@ export function init(rid) {
 	};
 }
 
-export function createRoomRequest(user) {
+export function createRoomRequest() {
 	return {
-		type: types.ROOM.CREATE_ROOM_REQUEST,
-		user
+		type: types.ROOM.CREATE_ROOM_REQUEST
 	};
 }
 

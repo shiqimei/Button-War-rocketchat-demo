@@ -14,9 +14,8 @@ import gameStatus from '../constants/gameStatus';
 	current: state.App.current,
 	authorized: state.App.authorized,
 	loading: state.App.loading,
-	player1: state.App.player1,
-	player2: state.App.player2,
-	owner: state.App.owner
+	player1: state.room.player1,
+	player2: state.room.player2,
 }))
 
 class CenterContainer extends React.Component {
@@ -27,7 +26,6 @@ class CenterContainer extends React.Component {
 		authorized: PropTypes.bool,
 		player1: PropTypes.object,
 		player2: PropTypes.object,
-		owner: PropTypes.bool,
 		loading: PropTypes.bool
 	}
 
@@ -51,23 +49,11 @@ class CenterContainer extends React.Component {
 		);
 	}
 
-	renderStartButton() {
-		const {
-			authorized, player1, player2, owner, settings
-		} = this.props;
-		let text = null;
-		
-		if (!authorized && player1) {
-			text = 'Login to Join';
-		}
-		if (player1 && player2 && owner) {
-			text = 'Start Game';
-		}
+	renderLoginToStartButton() {
+		const { settings } = this.props;
 
 		return (
-			<StartButton settings={settings} text={
-				text ? text : null
-			} />
+			<StartButton settings={settings} />
 		);
 	}
 
@@ -85,15 +71,15 @@ class CenterContainer extends React.Component {
 
 	render() {
 		const {
-			settings, current, authorized, player1, player2, owner, loading
+			settings, current, authorized, player1, player2, loading
 		} = this.props;
 
 		return current === gameStatus.COUNTDOWN ? null : (
 			<StyledCenter>
 				<Banner>{ settings.name }</Banner>
-				{ (!authorized || player1 && player2 && owner) ? this.renderStartButton() : null }
+				{ !authorized ? this.renderLoginToStartButton() : null }
 				{ loading ? this.renderLoading() : null }
-				{ (player1 && !player2 && authorized || player1 && player2 && !owner) ? this.renderNotice() : null }
+				{ (player1 && !player2 && authorized || player1 && player2) ? this.renderNotice() : null }
 				{ this.renderInstructions(settings.instructions) }
 			</StyledCenter>
 		);

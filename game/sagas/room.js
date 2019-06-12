@@ -3,10 +3,12 @@ import { ROOM } from '../actions/actionsTypes';
 import {
 	init as initRoomAction,
 	createRoomFailed,
-	joinRoomFailed
+	joinRoomFailed,
+	createRoomSuccess
 } from '../actions/room';
 import io from 'socket.io-client';
 import Settings from '../constants/settings';
+import reduxStore from '../lib/createStore';
 
 const { SERVER_URL } = Settings;
 const socket = io.connect(SERVER_URL);

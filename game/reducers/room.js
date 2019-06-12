@@ -5,8 +5,7 @@ const initialState = {
 	player1: null,
 	player1Score: 0,
 	player2: null,
-	player2Score: 0,
-	count: 0
+	player2Score: 0
 };
 
 export default function room(state = initialState, action) {
@@ -16,7 +15,7 @@ export default function room(state = initialState, action) {
 			...state,
 			rid: action.rid
 		};
-	case types.CREATE_ROOM_SUCCESS:
+	case types.ROOM.CREATE_ROOM_SUCCESS:
 		return {
 			...state,
 			...action.room

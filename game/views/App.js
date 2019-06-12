@@ -11,8 +11,8 @@ import Blocker from '../containers/Blocker';
 import position from '../constants/position';
 
 @connect(state => ({
-	player1: state.App.player1,
-	player2: state.App.player2,
+	player1: state.room.player1,
+	player2: state.room.player2,
 	rid: state.room.rid
 }))
 
@@ -32,6 +32,7 @@ class App extends React.Component {
 	render() {
 		const { player1, player2, rid } = this.props;
 
+		console.log(player1, player2)
 		return (
 			<React.Fragment>
 				<AuthPanel />

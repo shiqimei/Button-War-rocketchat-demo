@@ -4,7 +4,7 @@ import {
 } from './actions/actionsTypes';
 import * as AppActions from './actions/App';
 import {
-	createRoomRequest, createRoomSuccess, joinRoomSuccess
+	createRoomSuccess, joinRoomSuccess
 } from './actions/room';
 import reduxStore from './lib/createStore';
 import settings from './constants/settings';
@@ -17,6 +17,7 @@ socket.on(APP.STATE_UPDATED, App => {
 });
 
 socket.on(ROOM.CREATE_ROOM_SUCCESS, room => {
+	console.warn(room);
 	reduxStore.dispatch(createRoomSuccess(room));
 });
 
