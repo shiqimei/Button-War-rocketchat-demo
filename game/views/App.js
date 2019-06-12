@@ -31,7 +31,7 @@ class App extends React.Component {
 
 	render() {
 		const { player1, player2, rid } = this.props;
-		
+		console.log(player2)
 		return (
 			<React.Fragment>
 				<AuthPanel />

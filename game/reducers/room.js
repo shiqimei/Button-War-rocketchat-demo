@@ -6,7 +6,8 @@ const initialState = {
 	player1Score: 0,
 	player2: null,
 	player2Score: 0,
-	initialized: false
+	initialized: false,
+	owner: false
 };
 
 export default function room(state = initialState, action) {
@@ -22,6 +23,12 @@ export default function room(state = initialState, action) {
 			initialized: true
 		};
 	case types.ROOM.CREATE_ROOM_SUCCESS:
+		return {
+			...state,
+			...action.room,
+			owner: true
+		};
+	case types.ROOM.JOIN_ROOM_SUCCESS:
 		return {
 			...state,
 			...action.room

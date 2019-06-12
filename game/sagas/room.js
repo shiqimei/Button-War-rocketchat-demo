@@ -38,6 +38,7 @@ const handlejoinRoomequest = function* handlejoinRoomequest({ rid, user }) {
 };
 
 const root = function* root() {
+	yield takeLatest(ROOM.INIT, handleInit);
 	yield takeLatest(ROOM.CREATE_ROOM_REQUEST, handleCreateRoomequest);
 	yield takeLatest(ROOM.JOIN_ROOM_REQUEST, handlejoinRoomequest);
 };
