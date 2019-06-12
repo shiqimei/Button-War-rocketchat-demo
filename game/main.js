@@ -10,7 +10,8 @@ import reduxStore from './lib/createStore';
 import * as AppActions from './actions/App';
 import * as types from './actions/actionsTypes';
 import {
-	init as initRoomAction
+	init as initRoomAction,
+	player1TapRequest, player2TapRequest
 } from './actions/room';
 
 import Settings from './constants/settings';
@@ -116,6 +117,12 @@ class Game {
 					this.mute();
 					this.mute();
 				});
+				break;
+			case types.ROOM.PLAYER1_TAP_SUCCESS:
+				this.playerScore(this.player1);
+				break;
+			case types.ROOM.PLAYER2_TAP_SUCCESS:
+				this.playerScore(this.player2);
 				break;
 			default:
 				console.log(lastAction);
@@ -319,12 +326,12 @@ class Game {
 		}
 
 		// player one wins
-		if (App.current === 'win-player1') {
+		if (this.state.current === 'win-player1') {
 			this.overlay.setBanner(this.config.settings.playerOneWinText);
 		}
 
 		// player two wins
-		if (App.current === 'win-player2') {
+		if (this.state.current === 'win-player2') {
 			this.overlay.setBanner(this.config.settings.playerTwoWinText);
 		}
 
@@ -490,12 +497,14 @@ class Game {
 
 		if (player1Score) {
 			// player 1 scores a point
-			this.playerScore(this.player1);
+			// this.playerScore(this.player1);
+			reduxStore.dispatch(player1TapRequest());
 		}
 
 		if (player2Score) {
 			// player 2 scores a point
-			this.playerScore(this.player2);
+			// this.playerScore(this.player2);
+			reduxStore.dispatch(player2TapRequest());
 		}
 	}
 

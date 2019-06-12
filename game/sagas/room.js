@@ -57,7 +57,7 @@ const root = function* root() {
 	yield takeLatest(ROOM.INIT, handleInit);
 	yield takeLatest(ROOM.CREATE_ROOM_REQUEST, handleCreateRoomequest);
 	yield takeLatest(ROOM.JOIN_ROOM_REQUEST, handlejoinRoomequest);
-	yield takeLatest(ROOM.PLAYER2_TAP_REQUEST, handlePlayer1TapRequest);
+	yield takeLatest(ROOM.PLAYER1_TAP_REQUEST, handlePlayer1TapRequest);
 	yield takeLatest(ROOM.PLAYER2_TAP_REQUEST, handlePlayer2TapRequest);
 };
 

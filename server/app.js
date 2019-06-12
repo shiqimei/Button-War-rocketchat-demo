@@ -115,11 +115,11 @@ io.on('connection', (socket) => {
 	});
 
 	socket.on(Actions.ROOM.PLAYER1_TAP_REQUEST, () => {
-		io.emit(Actions.APP.PLAYER1_TAP_SUCCESS);
+		io.emit(Actions.ROOM.PLAYER1_TAP_SUCCESS);
 	});
 
 	socket.on(Actions.ROOM.PLAYER2_TAP_REQUEST, () => {
-		io.emit(Actions.APP.PLAYER2_TAP_SUCCESS);
+		io.emit(Actions.ROOM.PLAYER2_TAP_SUCCESS);
 	});
 });
 
