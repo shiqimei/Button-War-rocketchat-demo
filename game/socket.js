@@ -41,3 +41,7 @@ socket.on(ROOM.PLAYER1_LEAVED_ROOM, () => {
 socket.on(ROOM.PLAYER2_LEAVED_ROOM, () => {
 	reduxStore.dispatch(player2LeavedRoom());
 });
+
+socket.on(APP.COUNT_DOWN, () => {
+	reduxStore.dispatch(AppActions.countDown());
+});

@@ -10,14 +10,14 @@ import {
 @connect(state => ({
 	authorized: state.App.authorized
 }), dispatch => ({
-	countDown: () => dispatch(AppActions.countDown()),
+	countDownRequest: () => dispatch(AppActions.countDownRequest()),
 	showPanel: () => dispatch(showPanel())
 }))
 
 class StartButton extends React.Component {
 	static propTypes = {
 		settings: PropTypes.object.isRequired,
-		countDown: PropTypes.func,
+		countDownRequest: PropTypes.func,
 		showPanel: PropTypes.func,
 		authorized: PropTypes.bool,
 		text: PropTypes.string
@@ -25,7 +25,7 @@ class StartButton extends React.Component {
 
 	_onStartGameClick() {
 		const {
-			countDown, authorized, showPanel, text
+			countDownRequest, authorized, showPanel, text
 		} = this.props;
 
 		if (!authorized) {
@@ -33,7 +33,7 @@ class StartButton extends React.Component {
 			return;
 		} else {
 			if (text === 'Start Game') {
-				countDown();
+				countDownRequest();
 			}
 		}
 	}

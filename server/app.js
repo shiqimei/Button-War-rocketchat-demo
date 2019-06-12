@@ -105,6 +105,10 @@ io.on('connection', (socket) => {
 	socket.on(Actions.ROOM.CREATE_ROOM_REQUEST, async user => {
 		handleCreateRoomRequest(socket, user);
 	});
+
+	socket.on(Actions.APP.COUNT_DOWN_REQUEST, () => {
+		io.emit(Actions.APP.COUNT_DOWN);
+	});
 });
 
 async function handleCreateRoomRequest(socket, user, rid = null) {
