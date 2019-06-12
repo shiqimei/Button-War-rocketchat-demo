@@ -7,9 +7,10 @@ export function init(rid) {
 	};
 }
 
-export function initSuccess() {
+export function initSuccess(room) {
 	return {
-		type: types.ROOM.INIT_SUCCESS
+		type: types.ROOM.INIT_SUCCESS,
+		room
 	};
 }
 

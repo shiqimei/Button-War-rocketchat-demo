@@ -14,8 +14,8 @@ import settings from './constants/settings';
 const { SERVER_URL } = settings;
 const socket = io.connect(SERVER_URL);
 
-socket.on(ROOM.INIT_SUCCESS, () => {
-	reduxStore.dispatch(initSuccess());
+socket.on(ROOM.INIT_SUCCESS, (room) => {
+	reduxStore.dispatch(initSuccess(room));
 });
 
 socket.on(ROOM.INIT_FAILED, err => {

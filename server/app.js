@@ -47,7 +47,7 @@ io.on('connection', (socket) => {
 			const result = await model.deleteOne({ rid: rid });
 			if (result.ok) {
 				console.log(`${chalk.green('[INFO]')} player1 ${username} leaved room ${chalk.red(rid)}`);
-				io.emit(Actions.ROOM.PLAYER1_LEAVED_ROOM);
+				io.emit(Actions.ROOM.PLAYER2_LEAVED_ROOM);
 			}
 		}
 
@@ -72,7 +72,8 @@ io.on('connection', (socket) => {
 			};
 			io.emit(Actions.ROOM.INIT_FAILED, err);
 		} else {
-			io.emit(Actions.ROOM.INIT_SUCCESS);
+			const room = await model.findOne({ rid: rid }, { _id: 0, __v: 0, 'player1.socketId': 0, 'player2.socketId': 0 });
+			io.emit(Actions.ROOM.INIT_SUCCESS, room);
 		}
 	});
 

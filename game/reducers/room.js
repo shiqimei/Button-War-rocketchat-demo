@@ -20,7 +20,8 @@ export default function room(state = initialState, action) {
 	case types.ROOM.INIT_SUCCESS:
 		return {
 			...state,
-			initialized: true
+			initialized: true,
+			...action.room
 		};
 	case types.ROOM.CREATE_ROOM_SUCCESS:
 		return {
