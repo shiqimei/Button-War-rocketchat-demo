@@ -14,18 +14,6 @@ export function authorized(user) {
 	};
 }
 
-export function player1ScoreRequest() {
-	return {
-		type: types.APP.PLAYER1_SCORE_REQUEST
-	};
-}
-
-export function player2ScoreRequest() {
-	return {
-		type: types.APP.PLAYER2_SCORE_REQUEST
-	};
-}
-
 export function scoreUpdated() {
 	return {
 		type: types.APP.SCORE_UPDATED

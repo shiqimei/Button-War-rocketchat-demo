@@ -9,6 +9,7 @@ const server = http.createServer(app);
 const io = require('socket.io')(server);
 const Actions = require('./constants/actions');
 const chalk = require('chalk');
+const model = require('./models/model');
 
 app.use(morgan('dev'));
 
@@ -19,10 +20,10 @@ app.get('/', (req) => {
 	console.log(req.query);
 });
 
-const currentState = {};
-
 // database
-mongoose.connect('mongodb://localhost:27017/local');
+mongoose.connect('mongodb://localhost:27017/local', {
+	useNewUrlParser: true
+});
 const db = mongoose.connection;
 
 db.on('error', () => {
@@ -36,30 +37,50 @@ db.on('open', () => {
 // socket.io
 io.on('connection', (socket) => {
 
-	socket.on('disconnect', () => {
-		console.log(`${chalk.gray(socket.id)} ${chalk.red('leaved')}`);
+	socket.on('disconnect', async () => {
+		const player1LeavedRoom = await model.findOne({
+			'player1.socketId': socket.id
+		}, { _id: 0, __v: 0 });
+
+		if (player1LeavedRoom) {
+			const { rid, player1: { username } } = player1LeavedRoom;
+			const result = await model.deleteOne({ rid: rid });
+			if (result.ok) {
+				console.log(`${chalk.green('[INFO]')} player1 ${username} leaved room ${chalk.red(rid)}`);
+			}
+		}
+
+		const player2LeavedRoom = await model.findOne({
+			'player2.socketId': socket.id
+		}, { _id: 0, __v: 0 });
+
+		if (player2LeavedRoom) {
+			const { rid, player2: { username } } = player2LeavedRoom;
+			const result = await model.deleteOne({ rid: rid });
+			if (result.ok) {
+				console.log(`${chalk.green('[INFO]')} player2 ${username} leaved room ${chalk.red(rid)}`);
+			}
+		}
 	});
 
-	// waiting for player2 to join
-	if (currentState.player1 && !currentState.player2) {
-		io.emit(Actions.STATE_UPDATED, currentState);
-		console.log(JSON.stringify(currentState. null, 4));
-	}
-
-	socket.on(Actions.PLAYER1_JOIN_REQUEST, player => {
-		currentState.player1 = player;
-		currentState.membersCount = 1;
-
-		console.log(`${chalk.gray(socket.id)} ${player.username} ${chalk.green('connected')}
-		`);
-
-		io.emit(Actions.PLAYER1_JOINED, player);
-	});
-
-	socket.on(Actions.PLAYER2_JOIN_REQUEST, player => {
-		currentState.player2 = player;
-		currentState.membersCount = 2;
-		io.emit(Actions.PLAYER2_JOINED, player);
+	socket.on(Actions.ROOM.CREATE_ROOM_REQUEST, async user => {
+		const room = {
+			rid: socket.id,
+			player1: {
+				...user,
+				socketId: socket.id
+			}
+		};
+		const roomItem = new model(room);
+		roomItem.save((err) => {
+			if (err) {
+				console.warn(err);
+				io.emit(Actions.ROOM.CREATE_ROOM_FAILED, err);
+			} else {
+				console.log(`${chalk.green('[INFO]')} ${user.username} created room ${chalk.yellow(socket.id)}`);
+				io.emit(Actions.ROOM.CREATE_ROOM_SUCCESS, socket.id);
+			}
+		});
 	});
 });
 

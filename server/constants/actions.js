@@ -5,16 +5,22 @@ function createActionTypes(base, types) {
 }
 
 const APP = [
-	'STATE_UPDATED',
-	'PLAYER1_JOIN_REQUEST',
-	'PLAYER2_JOIN_REQUEST',
-	'PLAYER1_JOINED',
-	'PLAYER2_JOINED',
-	'PLAYER1_LEAVED',
-	'PLAYER2_LEAVED',
-	'PLAYER1_SCORE_REQUEST',
-	'PLAYER2_SCORE_REQUEST',
-	'SCORE_UPDATED'
+	'STATE_UPDATED'
 ];
 
-module.exports = createActionTypes('APP', APP);
+const ROOM = [
+	'INIT',
+	'CREATE_ROOM_REQUEST',
+	'CREATE_ROOM_SUCCESS',
+	'CREATE_ROOM_FAILED',
+	'JOIN_ROOM_REQUEST',
+	'JOIN_ROOM_SUCCESS',
+	'JOIN_ROOM_FAILED',
+	'PLAYER_LEAVED_ROOM'
+];
+
+
+module.exports = {
+	APP: createActionTypes('APP', APP),
+	ROOM: createActionTypes('ROOM', ROOM)
+};
