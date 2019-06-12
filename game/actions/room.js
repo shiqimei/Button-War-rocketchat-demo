@@ -62,9 +62,14 @@ export function joinRoomFailed(err) {
 	};
 }
 
-export function playerLeavedRoom(room) {
+export function player1LeavedRoom() {
 	return {
-		type: types.ROOM.PLAYER_LEAVED_ROOM,
-		room
+		type: types.ROOM.PLAYER1_LEAVED_ROOM
+	};
+}
+
+export function player2LeavedRoom() {
+	return {
+		type: types.ROOM.PLAYER2_LEAVED_ROOM
 	};
 }

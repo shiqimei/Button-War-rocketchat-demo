@@ -33,6 +33,18 @@ export default function room(state = initialState, action) {
 			...state,
 			...action.room
 		};
+	case types.ROOM.PLAYER1_LEAVED_ROOM:
+		return {
+			...state,
+			player1: state.player2,
+			player2: null,
+			owner: true
+		};
+	case types.ROOM.PLAYER2_LEAVED_ROOM:
+		return {
+			...state,
+			player2: null
+		};
 	default:
 		return state;
 	}

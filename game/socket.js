@@ -5,7 +5,8 @@ import {
 import * as AppActions from './actions/App';
 import {
 	initSuccess, initFailed,
-	createRoomSuccess, joinRoomSuccess
+	createRoomSuccess, joinRoomSuccess,
+	player1LeavedRoom, player2LeavedRoom
 } from './actions/room';
 import reduxStore from './lib/createStore';
 import settings from './constants/settings';
@@ -31,4 +32,12 @@ socket.on(ROOM.CREATE_ROOM_SUCCESS, room => {
 
 socket.on(ROOM.JOIN_ROOM_SUCCESS, room => {
 	reduxStore.dispatch(joinRoomSuccess(room));
+});
+
+socket.on(ROOM.PLAYER1_LEAVED_ROOM, () => {
+	reduxStore.dispatch(player1LeavedRoom());
+});
+
+socket.on(ROOM.PLAYER2_LEAVED_ROOM, () => {
+	reduxStore.dispatch(player2LeavedRoom());
 });

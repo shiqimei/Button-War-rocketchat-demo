@@ -47,6 +47,7 @@ io.on('connection', (socket) => {
 			const result = await model.deleteOne({ rid: rid });
 			if (result.ok) {
 				console.log(`${chalk.green('[INFO]')} player1 ${username} leaved room ${chalk.red(rid)}`);
+				io.emit(Actions.ROOM.PLAYER1_LEAVED_ROOM);
 			}
 		}
 
@@ -59,6 +60,7 @@ io.on('connection', (socket) => {
 			player2LeavedRoom.player2 = undefined;
 			await player2LeavedRoom.save();
 			console.log(`${chalk.green('[INFO]')} player2 ${username} leaved room ${chalk.red(rid)}`);
+			io.emit(Actions.ROOM.PLAYER2_LEAVED_ROOM);
 		}
 	});
 
