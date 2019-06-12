@@ -25,12 +25,16 @@ class StartButton extends React.Component {
 
 	_onStartGameClick() {
 		const {
-			startGame, authorized, showPanel
+			startGame, authorized, showPanel, text
 		} = this.props;
 
 		if (!authorized) {
 			showPanel();
 			return;
+		} else {
+			if (text === 'Start Game') {
+				startGame();
+			}
 		}
 	}
 
