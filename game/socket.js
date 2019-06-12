@@ -6,7 +6,9 @@ import * as AppActions from './actions/App';
 import {
 	initSuccess, initFailed,
 	createRoomSuccess, joinRoomSuccess,
-	player1LeavedRoom, player2LeavedRoom
+	player1LeavedRoom, player2LeavedRoom,
+	player1TapSuccess, player2TapSuccess
+
 } from './actions/room';
 import reduxStore from './lib/createStore';
 import settings from './constants/settings';
@@ -44,4 +46,16 @@ socket.on(ROOM.PLAYER2_LEAVED_ROOM, () => {
 
 socket.on(APP.COUNT_DOWN, () => {
 	reduxStore.dispatch(AppActions.countDown());
+});
+
+socket.on(APP.START_GAME, () => {
+	reduxStore.dispatch(AppActions.startGame());
+});
+
+socket.on(ROOM.PLAYER1_TAP_SUCCESS, () => {
+	reduxStore.dispatch(player1TapSuccess());
+});
+
+socket.on(ROOM.PLAYER2_TAP_SUCCESS, () => {
+	reduxStore.dispatch(player2TapSuccess());
 });

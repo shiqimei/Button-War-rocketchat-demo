@@ -109,6 +109,18 @@ io.on('connection', (socket) => {
 	socket.on(Actions.APP.COUNT_DOWN_REQUEST, () => {
 		io.emit(Actions.APP.COUNT_DOWN);
 	});
+
+	socket.on(Actions.APP.START_GAME_REQUEST, () => {
+		io.emit(Actions.APP.START_GAME);
+	});
+
+	socket.on(Actions.ROOM.PLAYER1_TAP_REQUEST, () => {
+		io.emit(Actions.APP.PLAYER1_TAP_SUCCESS);
+	});
+
+	socket.on(Actions.ROOM.PLAYER2_TAP_REQUEST, () => {
+		io.emit(Actions.APP.PLAYER2_TAP_SUCCESS);
+	});
 });
 
 async function handleCreateRoomRequest(socket, user, rid = null) {
