@@ -107,9 +107,9 @@ class Game {
 		reduxStore.subscribe(() => {
 			const { lastAction } = reduxStore.getState();
 			switch (lastAction.type) {
-			case types.APP.READY:
+			case types.APP.COUNT_DOWN:
 				this.countdown(this.countDownLength, this.goText, () => {
-					this.setState({ current: 'play' });
+					reduxStore.dispatch(AppActions.startGameRequest());
 
 					// if defaulting to have sound on by default
 					// double mute() to warmup iphone audio here
@@ -403,8 +403,6 @@ class Game {
 			this.pause();
 		}
 
-		// button
-		console.log(target.id);
 		if ( target.id === 'button') {
 			const { App } = reduxStore.getState();
 
@@ -483,6 +481,8 @@ class Game {
 
 		if (App.current != 'play' || this.state.paused) { return; }
 		let { clientX, clientY } = touch;
+
+		console.log(clientX, clientY);
 
 		// send tap to players
 		let player1Score = this.player1.tap({ x: clientX, y: clientY });

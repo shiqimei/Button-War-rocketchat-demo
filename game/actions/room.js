@@ -74,3 +74,27 @@ export function player2LeavedRoom() {
 		type: types.ROOM.PLAYER2_LEAVED_ROOM
 	};
 }
+
+export function player1TapRequest() {
+	return {
+		type: types.ROOM.PLAYER1_TAP_REQUEST
+	};
+}
+
+export function player2TapRequest() {
+	return {
+		type: types.ROOM.PLAYER2_TAP_REQUEST
+	};
+}
+
+export function player1TapSuccess() {
+	return {
+		type: types.ROOM.PLAYER1_TAP_SUCCESS
+	};
+}
+
+export function player2TapSuccess() {
+	return {
+		type: types.ROOM.PLAYER2_TAP_SUCCESS
+	};
+}

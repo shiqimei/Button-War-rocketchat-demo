@@ -33,14 +33,12 @@ export default function App(state = initialState, action) {
 	case types.APP.START_GAME:
 		return {
 			...state,
-			prev: state.current,
-			current: gameStatus.COUNTDOWN
+			current: gameStatus.PLAY
 		};
-	case types.APP.COUNT_DOWN_COMPLETE:
+	case types.APP.COUNT_DOWN:
 		return {
 			...state,
-			prev: state.current,
-			current: gameStatus.PLAY
+			current: gameStatus.COUNTDOWN
 		};
 	default:
 		return state;

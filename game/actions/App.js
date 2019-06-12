@@ -26,14 +26,26 @@ export function ready() {
 	};
 }
 
+export function startGameRequest() {
+	return {
+		type: types.APP.START_GAME_REQUEST
+	};
+}
+
 export function startGame() {
 	return {
 		type: types.APP.START_GAME
 	};
 }
 
-export function countDownComplete() {
+export function countDownRequest() {
 	return {
-		type: types.APP.COUNT_DOWN_COMPLETE
+		type: types.APP.COUNT_DOWN_REQUEST
+	};
+}
+
+export function countDown() {
+	return {
+		type: types.APP.COUNT_DOWN
 	};
 }
