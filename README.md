@@ -2,16 +2,20 @@
 
 A competitive button mashing game, which is the exploration that integrates the [Koji](https://gokoji.com) mini apps into [Rokcet.Chat](http://rocket.chat)!
 
-![](./docs/images/preview.gif)
-
-![](./docs/images/preview2.gif)
-
-## Features
-| Name | Status |
-| :-: | :-: |
-| Rocket.Chat Authorization | √ |
-| Websocket | Working in Progress |
-| ... | ... |
+## Development
+1. Clone the repo to the local:
+````bash
+git clone git@github.com:lolimay/Button-War-rocketchat-demo.git
+````
+2. Install the dependencies:
+````bash
+yarn
+````
+3. Start the project:
+````
+npm start
+````
+And then you will find the project is running in the [http://localhost:1234](http://localhost:1234).
 
 ## VCC's
 
