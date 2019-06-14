@@ -290,8 +290,8 @@ class Game {
 			this.player1.move(0, dy, this.frame.scale);
 			this.player2.move(0, dy, this.frame.scale);
 
-			this.player1.draw();
-			this.player2.draw();
+			// this.player1.draw();
+			// this.player2.draw();
 		}
 
 		// game play
@@ -315,14 +315,26 @@ class Game {
 			}
 
 			// player bounce
-			let dy = Math.cos(this.frame.count / 5);
-
+			let dy1 = 0;
+			let dy2 = 0;
+			if (!localStorage.getItem('count')) {
+				localStorage.setItem('count', 0);
+			}
+			let count = localStorage.getItem('count');
+			if (count % 7 === 0) {
+				console.log(count);
+				dy1 = Math.random(this.frame.count / 5) * 500 - 255;
+				dy2 = Math.random(this.frame.count / 5) * 500 - 255;
+			}
+			localStorage.setItem('count', ++count);
 			// bounce
-			this.player1.move(0, dy, this.frame.scale);
-			this.player2.move(0, dy, this.frame.scale);
+			this.player1.move(0, dy1, this.frame.scale);
+			this.player2.move(0, dy2, this.frame.scale);
 
-			this.player1.draw();
-			this.player2.draw();
+			if (this.state.current !== 'win-player1' && this.state.current !== 'win-player2') {
+				this.player1.draw();
+				this.player2.draw();
+			}
 		}
 
 		// player one wins
