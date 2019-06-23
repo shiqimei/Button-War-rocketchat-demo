@@ -45,6 +45,7 @@
     "express": "^4.17.1",
     "mongoose": "^5.5.12",
     "morgan": "^1.9.1",
+    "nodemon": "^1.19.1",
     "socket.io": "^2.2.0"
   }
 }
