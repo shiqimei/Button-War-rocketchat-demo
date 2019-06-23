@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
 
-import AuthPanel from '../containers/AuthPanel';
 import InfoBox from '../containers/InfoBox';
 import CenterContainer from '../containers/CenterContainer';
 import Blocker from '../containers/Blocker';
@@ -42,7 +41,6 @@ class App extends React.Component {
 		const { player1, player2, rid, current } = this.props;
 		return (
 			<React.Fragment>
-				<AuthPanel />
 				{ current === GameStatus.READY ? this.renderCenterContainer() : null }
 				<InfoBox position={position.BOTTOMLEFT} player={player1} />
 				<InfoBox position={position.BOTTOMRIGHT} player={player2} />

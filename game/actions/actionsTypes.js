@@ -22,12 +22,6 @@ export const APP = createRequestTypes('APP', [
 	'COUNT_DOWN'
 ]);
 
-export const AUTHPANEL = createRequestTypes('AUTHPANEL', [
-	...defaultTypes,
-	'SHOW_PANEL',
-	'HIDE_PANEL'
-]);
-
 export const ROOM = createRequestTypes('ROOM', [
 	...defaultTypes,
 	'INIT',

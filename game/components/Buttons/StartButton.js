@@ -3,9 +3,6 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import * as AppActions from '../../actions/App';
-import {
-	showPanel
-} from '../../actions/authPanel';
 
 @connect(state => ({
 	authorized: state.App.authorized

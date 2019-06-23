@@ -1,9 +1,11 @@
-function getUserInfo() {
+function getUserInfo(appName) {
 	if (window.parent) {
 		window.parent.postMessage({
 			rcEmbeddedSdk: {
-				version: '0.0.1',
 				action: 'getUserInfo',
+				payload: {
+					appName
+				}
 			},
 		}, '*');
 	}
