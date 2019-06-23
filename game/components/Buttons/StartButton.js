@@ -4,30 +4,30 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import * as AppActions from '../../actions/App';
 
+import RocketChat from '../../lib/rocketchat-koji';
+import { APP_NAME } from '../../constants/settings';
+
 @connect(state => ({
 	authorized: state.App.authorized
 }), dispatch => ({
-	countDownRequest: () => dispatch(AppActions.countDownRequest()),
-	showPanel: () => dispatch(showPanel())
+	countDownRequest: () => dispatch(AppActions.countDownRequest())
 }))
 
 class StartButton extends React.Component {
 	static propTypes = {
 		settings: PropTypes.object.isRequired,
 		countDownRequest: PropTypes.func,
-		showPanel: PropTypes.func,
 		authorized: PropTypes.bool,
 		text: PropTypes.string
 	}
 
-	_onStartGameClick() {
+	async _onStartGameClick() {
 		const {
-			countDownRequest, authorized, showPanel, text
+			countDownRequest, authorized, text
 		} = this.props;
 
 		if (!authorized) {
-			showPanel();
-			return;
+			RocketChat.getUserInfo(APP_NAME);
 		} else {
 			if (text === 'Start Game') {
 				countDownRequest();
