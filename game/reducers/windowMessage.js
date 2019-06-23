@@ -14,8 +14,12 @@ window.addEventListener('message', ({ data }) => {
 	}
 
 	try {
-		if (data.rcEmbeddedSdk.action === 'connected') {
-			const user = data.rcEmbeddedSdk.connected;
+		if (data.rcEmbeddedSdk.action === 'getUserInfo') {
+			const { success } = data.rcEmbeddedSdk;
+			if (!success) { return; }
+
+			const user = data.rcEmbeddedSdk.payload;
+
 			reduxStore.dispatch(playerAuthorizedAction(user));
 
 			const { App, room: { rid } } = reduxStore.getState();
