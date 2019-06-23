@@ -7,6 +7,7 @@ import RocketChat from '../lib/rocketchat-koji';
 
 import { connect } from 'react-redux';
 import * as authPanelActions from '../actions/authPanel';
+import { APP_NAME } from '../constants/settings';
 
 @connect(state => ({
 	show: state.authPanel.show,
@@ -51,7 +52,7 @@ class AuthPanel extends React.Component {
 							this.ref.current.className = '';
 							hidePanel();
 						}, 200);
-						RocketChat.getUserInfo();
+						RocketChat.getUserInfo(APP_NAME);
 					}}/>
 				</div>
 			</div>

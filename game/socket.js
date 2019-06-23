@@ -11,9 +11,8 @@ import {
 
 } from './actions/room';
 import reduxStore from './lib/createStore';
-import settings from './constants/settings';
+import { SERVER_URL } from './constants/settings';
 
-const { SERVER_URL } = settings;
 const socket = io.connect(SERVER_URL);
 
 socket.on(ROOM.INIT_SUCCESS, (room) => {

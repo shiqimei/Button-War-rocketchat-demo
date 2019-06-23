@@ -1,9 +1,8 @@
 import { takeLatest, put } from 'redux-saga/effects';
 import { APP } from '../actions/actionsTypes';
-import Settings from '../constants/settings';
+import { SERVER_URL } from '../constants/settings';
 import io from 'socket.io-client';
 
-const { SERVER_URL } = Settings;
 const socket = io.connect(SERVER_URL);
 
 const handleCountDownRequest = function* handleCountDownRequest() {

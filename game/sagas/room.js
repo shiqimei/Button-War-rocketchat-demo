@@ -7,10 +7,9 @@ import {
 	createRoomSuccess
 } from '../actions/room';
 import io from 'socket.io-client';
-import Settings from '../constants/settings';
+import { SERVER_URL } from '../constants/settings';
 import reduxStore from '../lib/createStore';
 
-const { SERVER_URL } = Settings;
 const socket = io.connect(SERVER_URL);
 
 const handleInit = function* handleInit({ rid }) {
