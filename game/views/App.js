@@ -21,7 +21,6 @@ class App extends React.Component {
 	static propTypes = {
 		player1: PropTypes.object,
 		player2: PropTypes.object,
-		rid: PropTypes.string,
 		current: PropTypes.string
 	}
 
@@ -44,7 +43,6 @@ class App extends React.Component {
 				{ current === GameStatus.READY ? this.renderCenterContainer() : null }
 				<InfoBox position={position.BOTTOMLEFT} player={player1} />
 				<InfoBox position={position.BOTTOMRIGHT} player={player2} />
-				{ rid ? null : this.renderBlocker() }
 			</React.Fragment>	
 		);
 	}

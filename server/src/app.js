@@ -11,6 +11,8 @@ const Actions = require('./constants/actions');
 const chalk = require('chalk');
 const model = require('./models/model');
 
+const randomString = require('./utils/randomString');
+
 app.use(morgan('dev'));
 
 app.use(bodyParser.json());
@@ -76,9 +78,11 @@ io.on('connection', (socket) => {
 	socket.on(Actions.ROOM.INIT, async rid => {
 		const result = await model.find({ rid: rid });
 		if (!result.length) {
-			const err = {
-				message: 'Invalid Room!'
-			};
+			model = {
+				rid: randomString(80)
+			}
+			const room = await model.save();
+			console.log(room);
 			io.emit(Actions.ROOM.INIT_FAILED, err);
 		} else {
 			const room = await model.findOne({ rid: rid }, { _id: 0, __v: 0, 'player1.socketId': 0, 'player2.socketId': 0 });
