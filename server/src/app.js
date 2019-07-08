@@ -77,14 +77,7 @@ io.on('connection', (socket) => {
 
 	socket.on(Actions.ROOM.INIT, async rid => {
 		const result = await model.find({ rid: rid });
-		if (!result.length) {
-			model = {
-				rid: randomString(80)
-			}
-			const room = await model.save();
-			console.log(room);
-			io.emit(Actions.ROOM.INIT_FAILED, err);
-		} else {
+		if (result.length) {
 			const room = await model.findOne({ rid: rid }, { _id: 0, __v: 0, 'player1.socketId': 0, 'player2.socketId': 0 });
 			io.emit(Actions.ROOM.INIT_SUCCESS, room);
 		}
