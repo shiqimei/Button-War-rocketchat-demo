@@ -11,6 +11,20 @@ function getUserInfo(appName) {
 	}
 }
 
+function invitingOthers(appName) {
+	if (window.parent) {
+		window.parent.postMessage({
+			rcEmbeddedSdk: {
+				action: 'invitingOthers',
+				payload: {
+					appName
+				}
+			},
+		}, '*');
+	}
+}
+
 export default {
-	getUserInfo
+	getUserInfo,
+	invitingOthers
 };
