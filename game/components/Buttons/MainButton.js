@@ -26,7 +26,7 @@ class MainButton extends React.Component {
 
 	async _onStartGameClick() {
 		const {
-			countDownRequest, authorized, text
+			countDownRequest, authorized, text, invitingOthersRequest
 		} = this.props;
 
 		if (!authorized) {
