@@ -42,6 +42,12 @@ export function createRoomFailed(err) {
 	};
 }
 
+export function invitingOthersRequest() {
+	return {
+		type: types.ROOM.INVITING_OTHERS_REQUEST
+	}
+}
+
 export function joinRoomRequest(rid, user) {
 	return {
 		type: types.ROOM.JOIN_ROOM_REQUEST,

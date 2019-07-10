@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import * as AppActions from '../../actions/App';
+import * as RoomActions from '../../actions/room';
 
 import RocketChat from '../../lib/rocketchat-koji';
 import { APP_NAME } from '../../constants/settings';
@@ -10,13 +11,15 @@ import { APP_NAME } from '../../constants/settings';
 @connect(state => ({
 	authorized: state.App.authorized
 }), dispatch => ({
-	countDownRequest: () => dispatch(AppActions.countDownRequest())
+	countDownRequest: () => dispatch(AppActions.countDownRequest()),
+	invitingOthersRequest: () => dispatch(RoomActions.invitingOthersRequest())
 }))
 
 class MainButton extends React.Component {
 	static propTypes = {
 		settings: PropTypes.object.isRequired,
 		countDownRequest: PropTypes.func,
+		invitingOthersRequest: PropTypes.func,
 		authorized: PropTypes.bool,
 		text: PropTypes.string
 	}
@@ -31,6 +34,9 @@ class MainButton extends React.Component {
 		} else {
 			if (text === 'Start Game') {
 				countDownRequest();
+			}
+			if (text === 'Inviting Others to Join') {
+				invitingOthersRequest();
 			}
 		}
 	}
