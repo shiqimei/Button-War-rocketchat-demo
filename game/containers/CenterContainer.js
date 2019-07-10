@@ -33,11 +33,7 @@ class CenterContainer extends React.Component {
 
 	renderNotice() {
 		const { player1, player2, owner } = this.props;
-		let text = 'Waiting for player 2 to join...';
-
-		if (player1 && player2 && !owner) {
-			text = 'Waiting for player 1 to start...';
-		}
+		let text = 'Waiting for player 1 to start...';
 		return (
 			<Notice>{ text }</Notice>
 		);
@@ -62,6 +58,9 @@ class CenterContainer extends React.Component {
 		}
 		if (player1 && player2 && owner) {
 			text = 'Start Game';
+		}
+		if (player1 && !player2 && authorized) {
+			text = 'Inviting Others to Join'
 		}
 
 		return (
@@ -91,9 +90,9 @@ class CenterContainer extends React.Component {
 		return current === gameStatus.COUNTDOWN ? null : (
 			<StyledCenter>
 				<Banner>{ settings.name }</Banner>
-				{ (!authorized || player1 && player2 && owner) ? this.renderMainButton() : null }
+				{ (!authorized || player1 && player2 && owner || player1 && !player2 && authorized) ? this.renderMainButton() : null }
 				{ loading ? this.renderLoading() : null }
-				{ (player1 && !player2 && authorized || player1 && player2 && !owner) ? this.renderNotice() : null }
+				{ (player1 && player2 && !owner) ? this.renderNotice() : null }
 				{ this.renderInstructions(settings.instructions) }
 			</StyledCenter>
 		);
