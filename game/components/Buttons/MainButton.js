@@ -13,7 +13,7 @@ import { APP_NAME } from '../../constants/settings';
 	countDownRequest: () => dispatch(AppActions.countDownRequest())
 }))
 
-class StartButton extends React.Component {
+class MainButton extends React.Component {
 	static propTypes = {
 		settings: PropTypes.object.isRequired,
 		countDownRequest: PropTypes.func,
@@ -66,4 +66,4 @@ const Button = styled.div`
     transition: opacity 1s, background-color 0.5s;
 `;
 
-export default StartButton;
+export default MainButton;

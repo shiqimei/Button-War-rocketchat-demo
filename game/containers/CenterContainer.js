@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import StartButton from '../components/Buttons/StartButton';
+import MainButton from '../components/Buttons/MainButton';
 import EllipsisLoading from '../components/Loading/EllipsisLoading';
 
 import gameStatus from '../constants/gameStatus';
@@ -51,7 +51,7 @@ class CenterContainer extends React.Component {
 		);
 	}
 
-	renderStartButton() {
+	renderMainButton() {
 		const {
 			authorized, player1, player2, owner, settings
 		} = this.props;
@@ -65,7 +65,7 @@ class CenterContainer extends React.Component {
 		}
 
 		return (
-			<StartButton settings={settings} text={
+			<MainButton settings={settings} text={
 				text ? text : null
 			} />
 		);
@@ -91,7 +91,7 @@ class CenterContainer extends React.Component {
 		return current === gameStatus.COUNTDOWN ? null : (
 			<StyledCenter>
 				<Banner>{ settings.name }</Banner>
-				{ (!authorized || player1 && player2 && owner) ? this.renderStartButton() : null }
+				{ (!authorized || player1 && player2 && owner) ? this.renderMainButton() : null }
 				{ loading ? this.renderLoading() : null }
 				{ (player1 && !player2 && authorized || player1 && player2 && !owner) ? this.renderNotice() : null }
 				{ this.renderInstructions(settings.instructions) }
