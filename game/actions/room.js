@@ -21,9 +21,10 @@ export function initFailed(err) {
 	};
 }
 
-export function createRoomRequest() {
+export function createRoomRequest(user) {
 	return {
-		type: types.ROOM.CREATE_ROOM_REQUEST
+		type: types.ROOM.CREATE_ROOM_REQUEST,
+		user
 	};
 }
 

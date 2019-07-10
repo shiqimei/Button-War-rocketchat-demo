@@ -22,6 +22,7 @@ const handleInit = function* handleInit({ rid }) {
 
 const handleCreateRoomequest = function* handleCreateRoomequest({ user }) {
 	try {
+		console.warn(user)
 		yield socket.emit(ROOM.CREATE_ROOM_REQUEST, user);
 	} catch (err) {
 		yield put(createRoomFailed(err));

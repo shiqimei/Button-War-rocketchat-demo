@@ -100,6 +100,7 @@ io.on('connection', (socket) => {
 	});
 
 	socket.on(Actions.ROOM.CREATE_ROOM_REQUEST, async user => {
+		console.log(user);
 		handleCreateRoomRequest(socket, user);
 	});
 
